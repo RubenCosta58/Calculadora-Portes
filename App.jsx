@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 
+import logo from "./logo.png";
+
 import { products } from "./products";
 import { getZone, getShipping } from "./transport";
 
@@ -174,8 +176,9 @@ export default function App() {
       <div className="max-w-6xl mx-auto">
 
         <div className="flex items-center gap-6 mb-10">
+
           <img
-            src="/logo.png"
+            src={logo}
             alt="Logo"
             className="w-40 object-contain"
           />
@@ -183,6 +186,7 @@ export default function App() {
           <h1 className="text-5xl font-bold">
             Calculadora de Portes DUNE
           </h1>
+
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-10">
