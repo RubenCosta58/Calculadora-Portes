@@ -194,20 +194,20 @@ export default function App() {
         {/* LOGO */}
 
         <img
-          src="/G1 Logo.png"
+          src="/G1 LOGO.png"
           alt="Logo"
           style={{
-            width: "60px",
-            height: "60px",
+            width: "40px",
+            height: "40px",
             objectFit: "contain",
             display: "block",
-            marginBottom: "30px",
+            marginBottom: "20px",
           }}
         />
 
         {/* REFERÊNCIAS */}
 
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
 
           {renderReference(
             "Referência 1",
@@ -252,11 +252,10 @@ export default function App() {
         <div
           style={{
             background: "#000",
-            padding: "30px",
-            borderRadius: "25px",
-            marginBottom: "80px",
-            marginTop: "30px",
-            maxWidth: "700px",
+            padding: "20px",
+            borderRadius: "20px",
+            marginBottom: "50px",
+            maxWidth: "500px",
             marginLeft: "auto",
             marginRight: "auto",
           }}
@@ -265,11 +264,10 @@ export default function App() {
           <div
             style={{
               color: "#fff",
-              fontSize: "32px",
+              fontSize: "24px",
               fontWeight: "800",
               textAlign: "center",
-              marginBottom: "20px",
-              letterSpacing: "2px",
+              marginBottom: "15px",
             }}
           >
             CÓDIGO POSTAL
@@ -284,12 +282,12 @@ export default function App() {
             placeholder="2750-440"
             style={{
               width: "100%",
-              padding: "18px",
-              fontSize: "36px",
+              padding: "12px",
+              fontSize: "28px",
               fontWeight: "700",
               textAlign: "center",
-              borderRadius: "15px",
-              border: "3px solid white",
+              borderRadius: "12px",
+              border: "2px solid white",
             }}
           />
 
