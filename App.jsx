@@ -94,7 +94,8 @@ export default function App() {
     { start: 2000, end: 2999, zone: 2 },
     { start: 3000, end: 3999, zone: 3 },
     { start: 4000, end: 4999, zone: 4 },
-    { start: 5000, end: 9999, zone: 5 },
+    { start: 5000, end: 7999, zone: 5 },
+    { start: 8000, end: 9999, zone: 6 },
   ];
 
   const products = [
@@ -202,7 +203,9 @@ export default function App() {
     boxes3 * product3.kgBox +
     boxes4 * product4.kgBox;
 
-  const palletCount = Math.max(1, Math.ceil(totalWeightProducts / 1000));
+  const palletCount = totalWeightProducts > 0
+    ? Math.max(1, Math.ceil(totalWeightProducts / 1000))
+    : 0;
 
   const palletWeight = palletCount * 18;
 
@@ -215,7 +218,7 @@ export default function App() {
     boxes4 * product4.realSqm
   ).toFixed(2);
 
-  const postalPrefix = parseInt(postalCode?.split('-')[0]);
+  const postalPrefix = parseInt(postalCode?.split('-')[0] || 0);
 
   const zone = postalZones.find(
     (z) => postalPrefix >= z.start && postalPrefix <= z.end
@@ -225,7 +228,9 @@ export default function App() {
     ? transportTable[zone]?.find((t) => totalWeight <= t.maxKg)?.price || 0
     : 0;
 
-  const shippingPrice = (baseShipping * 1.03).toFixed(2);
+  const shippingPrice = baseShipping > 0
+    ? (baseShipping * 1.03).toFixed(2)
+    : '0.00';
 
   const exportPDF = () => {
     const doc = new jsPDF();
@@ -357,22 +362,22 @@ export default function App() {
 
             <div className="space-y-3">
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>m2 / caixa -</span>
+                <span>m2 / caixa :</span>
                 <strong>{product1.sqmBox}</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>kg / caixa -</span>
+                <span>kg / caixa :</span>
                 <strong>{product1.kgBox} kg</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>Caixas necessárias -</span>
+                <span>Caixas necessárias :</span>
                 <strong>{totalBoxes}</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>m2 reais finais -</span>
+                <span>m2 reais finais :</span>
                 <strong>{realTotalSqm} m²</strong>
               </div>
             </div>
@@ -383,12 +388,12 @@ export default function App() {
 
             <div className="space-y-3">
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>Peso Total -</span>
+                <span>Peso Total :</span>
                 <strong>{totalWeight.toFixed(2)} kg</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>Zona -</span>
+                <span>Zona :</span>
                 <strong>{zone || '-'}</strong>
               </div>
 
@@ -398,7 +403,7 @@ export default function App() {
               </div>
 
               <div className="flex justify-between items-center text-2xl mt-6">
-                <span>Valor -</span>
+                <span>Valor :</span>
                 <strong>{shippingPrice} €</strong>
               </div>
             </div>
