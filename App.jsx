@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import jsPDF from 'jspdf';
 
 export default function App() {
   const transportTable = {
@@ -173,18 +174,46 @@ export default function App() {
   const [selectedProduct2, setSelectedProduct2] = useState(products[0].ref);
   const [selectedProduct3, setSelectedProduct3] = useState(products[0].ref);
   const [selectedProduct4, setSelectedProduct4] = useState(products[0].ref);
-  const [sqm, setSqm] = useState('');
+  const [sqm1, setSqm1] = useState('');
+  const [sqm2, setSqm2] = useState('');
+  const [sqm3, setSqm3] = useState('');
+  const [sqm4, setSqm4] = useState('');
   const [postalCode, setPostalCode] = useState('');
 
-  const product = products.find((p) => p.ref === selectedProduct1);
+  const product1 = products.find((p) => p.ref === selectedProduct1);
+  const product2 = products.find((p) => p.ref === selectedProduct2);
+  const product3 = products.find((p) => p.ref === selectedProduct3);
+  const product4 = products.find((p) => p.ref === selectedProduct4);
 
-  const boxes = sqm
-    ? Math.ceil(parseFloat(sqm) / product.realSqm)
-    : 0;
+  const calculateBoxes = (sqm, product) => {
+    return sqm ? Math.ceil(parseFloat(sqm || 0) / product.realSqm) : 0;
+  };
 
-  const totalWeight = boxes * product.kgBox;
+  const boxes1 = calculateBoxes(sqm1, product1);
+  const boxes2 = calculateBoxes(sqm2, product2);
+  const boxes3 = calculateBoxes(sqm3, product3);
+  const boxes4 = calculateBoxes(sqm4, product4);
 
-  const realTotalSqm = (boxes * product.realSqm).toFixed(2);
+  const totalBoxes = boxes1 + boxes2 + boxes3 + boxes4;
+
+  const totalWeightProducts =
+    boxes1 * product1.kgBox +
+    boxes2 * product2.kgBox +
+    boxes3 * product3.kgBox +
+    boxes4 * product4.kgBox;
+
+  const palletCount = Math.max(1, Math.ceil(totalWeightProducts / 1000));
+
+  const palletWeight = palletCount * 18;
+
+  const totalWeight = totalWeightProducts + palletWeight;
+
+  const realTotalSqm = (
+    boxes1 * product1.realSqm +
+    boxes2 * product2.realSqm +
+    boxes3 * product3.realSqm +
+    boxes4 * product4.realSqm
+  ).toFixed(2);
 
   const postalPrefix = parseInt(postalCode?.split('-')[0]);
 
@@ -192,10 +221,33 @@ export default function App() {
     (z) => postalPrefix >= z.start && postalPrefix <= z.end
   )?.zone;
 
-  const shippingPrice = zone
-    ? transportTable[zone]?.find((t) => totalWeight <= t.maxKg)?.price ||
-      'Consultar'
-    : '-';
+  const baseShipping = zone
+    ? transportTable[zone]?.find((t) => totalWeight <= t.maxKg)?.price || 0
+    : 0;
+
+  const shippingPrice = (baseShipping * 1.03).toFixed(2);
+
+  const exportPDF = () => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text('Calculadora de Portes DUNE', 20, 20);
+
+    doc.setFontSize(12);
+
+    doc.text(`Código Postal: ${postalCode}`, 20, 40);
+    doc.text(`Zona: ${zone || '-'}`, 20, 50);
+
+    doc.text(`Caixas Totais: ${totalBoxes}`, 20, 70);
+    doc.text(`m2 Reais Finais: ${realTotalSqm} m2`, 20, 80);
+    doc.text(`Peso Total: ${totalWeight.toFixed(2)} kg`, 20, 90);
+    doc.text(`Paletes: ${palletCount}`, 20, 100);
+
+    doc.setFontSize(14);
+    doc.text(`Valor Transporte: ${shippingPrice} €`, 20, 120);
+
+    doc.save('portes-dune.pdf');
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -235,11 +287,14 @@ export default function App() {
             <label className="block text-lg font-semibold mb-2">
               Quantidade:
             </label>
+            <div className="text-sm text-gray-500 mb-2">
+              Caixas necessárias: {boxes1}
+            </div>
             <input
               type="number"
               className="w-full border rounded-2xl p-3"
-              value={sqm}
-              onChange={(e) => setSqm(e.target.value)}
+              value={sqm1}
+              onChange={(e) => setSqm1(e.target.value)}
               placeholder="Ex: 32"
             />
           </div>
@@ -254,6 +309,23 @@ export default function App() {
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
               placeholder="2750-440"
+            />
+          </div>
+
+          <div>
+            <label className="block text-lg font-semibold mb-2">
+              Quantidade:
+            </label>
+            <input
+              type="number"
+              className="w-full border rounded-2xl p-3"
+              value={sqm2}
+              onChange={(e) => setSqm2(e.target.value)}
+              placeholder="Ex: 12"
+            />
+            <div className="text-sm text-gray-500 mt-2">
+              Caixas necessárias: {boxes2}
+            </div>
             />
           </div>
 
@@ -274,6 +346,23 @@ export default function App() {
 
           <div>
             <label className="block text-lg font-semibold mb-2">
+              Quantidade:
+            </label>
+            <input
+              type="number"
+              className="w-full border rounded-2xl p-3"
+              value={sqm3}
+              onChange={(e) => setSqm3(e.target.value)}
+              placeholder="Ex: 8"
+            />
+            <div className="text-sm text-gray-500 mt-2">
+              Caixas necessárias: {boxes3}
+            </div>
+            />
+          </div>
+
+          <div>
+            <label className="block text-lg font-semibold mb-2">
               Referência 3 :
             </label>
             <select
@@ -285,6 +374,23 @@ export default function App() {
                 <option key={p.ref}>{p.ref}</option>
               ))}
             </select>
+          </div>
+
+          <div>
+            <label className="block text-lg font-semibold mb-2">
+              Quantidade:
+            </label>
+            <input
+              type="number"
+              className="w-full border rounded-2xl p-3"
+              value={sqm4}
+              onChange={(e) => setSqm4(e.target.value)}
+              placeholder="Ex: 5"
+            />
+            <div className="text-sm text-gray-500 mt-2">
+              Caixas necessárias: {boxes4}
+            </div>
+            />
           </div>
 
           <div>
@@ -312,17 +418,17 @@ export default function App() {
             <div className="space-y-3">
               <div className="flex justify-between items-center py-1 gap-10">
                 <span>m2 / caixa -</span>
-                <strong>{product.sqmBox}</strong>
+                <strong>{product1.sqmBox}</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
                 <span>kg / caixa -</span>
-                <strong>{product.kgBox} kg</strong>
+                <strong>{product1.kgBox} kg</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
                 <span>Caixas necessárias -</span>
-                <strong>{boxes}</strong>
+                <strong>{totalBoxes}</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
@@ -348,18 +454,27 @@ export default function App() {
                 <strong>{zone || '-'}</strong>
               </div>
 
+              <div className="flex justify-between items-center py-1 gap-10">
+                <span>Paletes -</span>
+                <strong>{palletCount}</strong>
+              </div>
+
+              
+
               <div className="flex justify-between items-center text-2xl mt-6">
                 <span>Valor -</span>
                 <strong>
-                  {typeof shippingPrice === 'number'
-                    ? `${shippingPrice.toFixed(2)} €`
-                    : shippingPrice}
+                  `${shippingPrice} €`
                 </strong>
-              </div>
-            </div>
-          </div>
+              <button
+            onClick={exportPDF}
+            className="mt-10 bg-black text-white px-6 py-4 rounded-2xl font-semibold hover:opacity-90 transition"
+          >
+            Exportar PDF
+          </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
