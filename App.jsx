@@ -1,120 +1,8 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 
-const products = [
-  { ref: "Agadir", sqmBox: 0.68, kgBox: 13.2 },
-  { ref: "Alfar 6,5x20", sqmBox: 0.624, kgBox: 8.64 },
-  { ref: "Altea 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
-  { ref: "Antiga 6,9x24", sqmBox: 0.7451, kgBox: 10.8 },
-  { ref: "Aqua", sqmBox: 0.68, kgBox: 13.1 },
-  { ref: "Ardesia", sqmBox: 1, kgBox: 18 },
-  { ref: "Atelier 7,5x15", sqmBox: 0.5399, kgBox: 9.12 },
-  { ref: "Atelier 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
-  { ref: "Atlantique 6,9x24", sqmBox: 0.7451, kgBox: 10.71 },
-  { ref: "Atlantique 20x20", sqmBox: 0.68, kgBox: 13.18 },
-  { ref: "Bali", sqmBox: 1, kgBox: 18 },
-  { ref: "Balmoral", sqmBox: 1, kgBox: 17.5 },
-  { ref: "Bambu", sqmBox: 1, kgBox: 17.8 },
-  { ref: "Barraquetes 20x20", sqmBox: 0.68, kgBox: 12.82 },
-  { ref: "Bayonne 20x20", sqmBox: 0.68, kgBox: 12.6 },
-  { ref: "Bellamira", sqmBox: 0.68, kgBox: 13 },
-  { ref: "Berlin", sqmBox: 1, kgBox: 18 },
-  { ref: "Black", sqmBox: 1, kgBox: 18 },
-  { ref: "Brera", sqmBox: 0.68, kgBox: 13 },
-  { ref: "Buckingham", sqmBox: 1, kgBox: 18 },
-  { ref: "Cabanyal 20x20", sqmBox: 0.68, kgBox: 12.82 },
-  { ref: "Canterbury", sqmBox: 1, kgBox: 18 },
-  { ref: "Carme", sqmBox: 1, kgBox: 18 },
-  { ref: "Carmine", sqmBox: 1, kgBox: 18 },
-  { ref: "Catalina", sqmBox: 0.68, kgBox: 13.1 },
-  { ref: "Chicago", sqmBox: 1, kgBox: 18 },
-  { ref: "Coimbra", sqmBox: 1, kgBox: 18 },
-  { ref: "Colonia", sqmBox: 1, kgBox: 18 },
-  { ref: "Corfu", sqmBox: 1, kgBox: 18 },
-  { ref: "Creta", sqmBox: 1, kgBox: 18 },
-  { ref: "Duomo", sqmBox: 0.68, kgBox: 13.1 },
-  { ref: "Emanuele", sqmBox: 0.68, kgBox: 13.1 },
-  { ref: "Evora", sqmBox: 1, kgBox: 18 },
-  { ref: "Exa", sqmBox: 1, kgBox: 18 },
-  { ref: "Faro", sqmBox: 1, kgBox: 18 },
-  { ref: "Flat", sqmBox: 1.2599, kgBox: 20.16 },
-  { ref: "Flat Iris Satin", sqmBox: 1.2599, kgBox: 20.16 },
-  { ref: "Flat Rainbow", sqmBox: 1.2599, kgBox: 20.16 },
-  { ref: "Flat Savannah", sqmBox: 0.2699, kgBox: 4.32 },
-  { ref: "Flora Lapis", sqmBox: 1, kgBox: 18 },
-  { ref: "Fragmenta 20x20", sqmBox: 0.68, kgBox: 13.19 },
-  { ref: "Garibaldi", sqmBox: 1, kgBox: 18 },
-  { ref: "Golden Stone", sqmBox: 1, kgBox: 18 },
-  { ref: "Granadella", sqmBox: 1, kgBox: 18 },
-  { ref: "Grazie", sqmBox: 1, kgBox: 18 },
-  { ref: "Greenland", sqmBox: 1, kgBox: 18 },
-];
-
-const transportRates = {
-  1: [
-    { max: 100, price: 22 },
-    { max: 200, price: 29 },
-    { max: 300, price: 37 },
-    { max: 500, price: 49 },
-  ],
-  2: [
-    { max: 100, price: 24 },
-    { max: 200, price: 33 },
-    { max: 300, price: 42 },
-    { max: 500, price: 58 },
-  ],
-  3: [
-    { max: 100, price: 29 },
-    { max: 200, price: 39 },
-    { max: 300, price: 52 },
-    { max: 500, price: 69 },
-  ],
-  4: [
-    { max: 100, price: 35 },
-    { max: 200, price: 48 },
-    { max: 300, price: 62 },
-    { max: 500, price: 82 },
-  ],
-  5: [
-    { max: 100, price: 42 },
-    { max: 200, price: 57 },
-    { max: 300, price: 74 },
-    { max: 500, price: 99 },
-  ],
-  6: [
-    { max: 100, price: 49 },
-    { max: 200, price: 68 },
-    { max: 300, price: 88 },
-    { max: 500, price: 119 },
-  ],
-};
-
-function getZone(postalCode) {
-  const prefix = parseInt(postalCode?.split("-")[0] || 0);
-
-  if (prefix >= 1000 && prefix <= 1999) return 1;
-  if (prefix >= 2000 && prefix <= 2999) return 2;
-  if (prefix >= 3000 && prefix <= 3999) return 3;
-  if (prefix >= 4000 && prefix <= 4999) return 4;
-  if (prefix >= 5000 && prefix <= 7999) return 5;
-  if (prefix >= 8000 && prefix <= 9999) return 6;
-
-  return null;
-}
-
-function getShipping(zone, weight) {
-  if (!zone || !weight) return 0;
-
-  const table = transportRates[zone];
-
-  for (const row of table) {
-    if (weight <= row.max) {
-      return row.price;
-    }
-  }
-
-  return table[table.length - 1].price;
-}
+import { products } from "./products";
+import { getZone, getShipping } from "./transport";
 
 export default function App() {
   const [postalCode, setPostalCode] = useState("");
@@ -144,7 +32,11 @@ export default function App() {
   const boxes3 = calcBoxes(sqm3, p3.sqmBox);
   const boxes4 = calcBoxes(sqm4, p4.sqmBox);
 
-  const totalBoxes = boxes1 + boxes2 + boxes3 + boxes4;
+  const totalBoxes =
+    boxes1 +
+    boxes2 +
+    boxes3 +
+    boxes4;
 
   const totalWeightProducts =
     boxes1 * p1.kgBox +
@@ -152,12 +44,11 @@ export default function App() {
     boxes3 * p3.kgBox +
     boxes4 * p4.kgBox;
 
-  const palletCount =
-    totalWeightProducts > 0
-      ? Math.max(1, Math.ceil(totalWeightProducts / 1000))
-      : 0;
+  const palletWeight =
+    totalWeightProducts > 0 ? 18 : 0;
 
-  const totalWeight = totalWeightProducts + palletCount * 18;
+  const totalWeight =
+    totalWeightProducts + palletWeight;
 
   const realTotalSqm =
     boxes1 * p1.sqmBox +
@@ -167,27 +58,63 @@ export default function App() {
 
   const zone = getZone(postalCode);
 
-  const baseShipping = getShipping(zone, totalWeight);
+  const baseShipping =
+    getShipping(zone, totalWeight);
 
   const shippingPrice =
-    baseShipping > 0 ? (baseShipping * 1.03).toFixed(2) : "0.00";
+    baseShipping > 0
+      ? (baseShipping * 1.03).toFixed(2)
+      : "0.00";
 
   const exportPDF = () => {
     const doc = new jsPDF();
 
     doc.setFontSize(22);
-    doc.text("Calculadora de Portes DUNE", 20, 20);
+    doc.text(
+      "Calculadora de Portes DUNE",
+      20,
+      20
+    );
 
     doc.setFontSize(14);
 
-    doc.text(`Código Postal: ${postalCode}`, 20, 45);
-    doc.text(`Zona: ${zone || "-"}`, 20, 55);
-    doc.text(`Peso Total: ${totalWeight.toFixed(2)} kg`, 20, 75);
-    doc.text(`Caixas Totais: ${totalBoxes}`, 20, 85);
-    doc.text(`m2 reais finais: ${realTotalSqm.toFixed(2)} m²`, 20, 95);
+    doc.text(
+      `Código Postal: ${postalCode}`,
+      20,
+      45
+    );
+
+    doc.text(
+      `Zona: ${zone || "-"}`,
+      20,
+      55
+    );
+
+    doc.text(
+      `Peso Total: ${totalWeight.toFixed(2)} kg`,
+      20,
+      75
+    );
+
+    doc.text(
+      `Caixas Totais: ${totalBoxes}`,
+      20,
+      85
+    );
+
+    doc.text(
+      `m2 reais finais: ${realTotalSqm.toFixed(2)} m²`,
+      20,
+      95
+    );
 
     doc.setFontSize(18);
-    doc.text(`Valor Transporte: ${shippingPrice} €`, 20, 120);
+
+    doc.text(
+      `Valor Transporte: ${shippingPrice} €`,
+      20,
+      120
+    );
 
     doc.save("portes-dune.pdf");
   };
@@ -201,30 +128,43 @@ export default function App() {
     boxes
   ) => (
     <div className="bg-white rounded-2xl shadow p-6">
-      <label className="block text-xl font-bold mb-3">{title}</label>
+      <label className="block text-xl font-bold mb-3">
+        {title}
+      </label>
 
       <select
         value={ref}
-        onChange={(e) => setRef(e.target.value)}
+        onChange={(e) =>
+          setRef(e.target.value)
+        }
         className="w-full border rounded-xl p-4 mb-4"
       >
         {products.map((p) => (
-          <option key={p.ref}>{p.ref}</option>
+          <option key={p.ref}>
+            {p.ref}
+          </option>
         ))}
       </select>
 
-      <label className="block font-semibold mb-2">Quantidade:</label>
+      <label className="block font-semibold mb-2">
+        Quantidade:
+      </label>
 
       <input
         type="number"
         value={sqm}
-        onChange={(e) => setSqm(e.target.value)}
+        onChange={(e) =>
+          setSqm(e.target.value)
+        }
         placeholder="Ex: 12"
         className="w-full border rounded-xl p-4"
       />
 
       <div className="mt-4 text-lg">
-        <strong>Caixas necessárias:</strong> {boxes}
+        <strong>
+          Caixas necessárias:
+        </strong>{" "}
+        {boxes}
       </div>
     </div>
   );
@@ -246,13 +186,47 @@ export default function App() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {renderReference("Referência 1", ref1, setRef1, sqm1, setSqm1, boxes1)}
-          {renderReference("Referência 2", ref2, setRef2, sqm2, setSqm2, boxes2)}
-          {renderReference("Referência 3", ref3, setRef3, sqm3, setSqm3, boxes3)}
-          {renderReference("Referência 4", ref4, setRef4, sqm4, setSqm4, boxes4)}
+
+          {renderReference(
+            "Referência 1",
+            ref1,
+            setRef1,
+            sqm1,
+            setSqm1,
+            boxes1
+          )}
+
+          {renderReference(
+            "Referência 2",
+            ref2,
+            setRef2,
+            sqm2,
+            setSqm2,
+            boxes2
+          )}
+
+          {renderReference(
+            "Referência 3",
+            ref3,
+            setRef3,
+            sqm3,
+            setSqm3,
+            boxes3
+          )}
+
+          {renderReference(
+            "Referência 4",
+            ref4,
+            setRef4,
+            sqm4,
+            setSqm4,
+            boxes4
+          )}
+
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl p-8 mb-10">
+
           <div className="text-3xl font-bold mb-4">
             CÓDIGO POSTAL:
           </div>
@@ -260,37 +234,83 @@ export default function App() {
           <input
             type="text"
             value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
+            onChange={(e) =>
+              setPostalCode(e.target.value)
+            }
             placeholder="2750-440"
             className="w-full border rounded-2xl p-6 text-5xl font-bold"
           />
+
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
 
           <div className="bg-white rounded-3xl shadow-xl p-8">
+
             <h2 className="text-4xl font-bold mb-8">
               Dados do Produto
             </h2>
 
             <div className="space-y-5 text-xl">
-              <div><strong>Caixas necessárias :</strong> {totalBoxes}</div>
-              <div><strong>m2 reais finais :</strong> {realTotalSqm.toFixed(2)} m²</div>
-              <div><strong>kg estimados :</strong> {totalWeight.toFixed(2)} kg</div>
+
+              <div>
+                <strong>
+                  Caixas necessárias :
+                </strong>{" "}
+                {totalBoxes}
+              </div>
+
+              <div>
+                <strong>
+                  m2 reais finais :
+                </strong>{" "}
+                {realTotalSqm.toFixed(2)} m²
+              </div>
+
+              <div>
+                <strong>
+                  kg estimados :
+                </strong>{" "}
+                {totalWeight.toFixed(2)} kg
+              </div>
+
             </div>
+
           </div>
 
           <div className="bg-black text-white rounded-3xl shadow-xl p-8">
+
             <h2 className="text-4xl font-bold mb-8">
               Resultado Transporte
             </h2>
 
             <div className="space-y-5 text-xl">
-              <div><strong>Peso Total :</strong> {totalWeight.toFixed(2)} kg</div>
-              <div><strong>Zona :</strong> {zone || "-"}</div>
-              <div><strong>Valor :</strong> {shippingPrice} €</div>
+
+              <div>
+                <strong>
+                  Peso Total :
+                </strong>{" "}
+                {totalWeight.toFixed(2)} kg
+              </div>
+
+              <div>
+                <strong>
+                  Zona :
+                </strong>{" "}
+                {zone || "-"}
+              </div>
+
+              <div>
+                <strong>
+                  Valor :
+                </strong>{" "}
+                {shippingPrice} €
+              </div>
+
             </div>
+
           </div>
+
         </div>
 
         <button
