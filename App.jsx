@@ -198,12 +198,12 @@ export default function App() {
         <img
           src={logo}
           alt="Logo"
-          className="w-20 mb-12"
+          className="w-20 h-20 object-contain mb-16"
         />
 
         {/* REFERÊNCIAS */}
 
-        <div className="grid md:grid-cols-2 gap-6 mb-28">
+        <div className="grid md:grid-cols-2 gap-6 mb-32">
 
           {renderReference(
             "Referência 1",
@@ -243,11 +243,11 @@ export default function App() {
 
         </div>
 
-        {/* BLOCO ISOLADO CÓDIGO POSTAL */}
+        {/* BLOCO SEPARADO CÓDIGO POSTAL */}
 
-        <div className="bg-black rounded-3xl p-12 mb-28 shadow-2xl">
+        <div className="bg-black rounded-3xl p-12 mb-32 shadow-2xl">
 
-          <div className="text-white text-center text-6xl font-black mb-10">
+          <div className="text-white text-center text-6xl font-black mb-10 tracking-widest">
             CÓDIGO POSTAL
           </div>
 
