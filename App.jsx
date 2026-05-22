@@ -211,7 +211,7 @@ export default function App() {
             <h1 className="text-4xl font-bold mb-2">
               Calculadora de Portes Cerâmica
             </h1>
-          <p className="text-gray-500">
+            <p className="text-gray-500">
               Dune + DSV | Ferramenta local
             </p>
           </div>
@@ -259,9 +259,6 @@ export default function App() {
             />
           </div>
 
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div>
             <label className="block text-sm font-medium mb-2">
               Referência 2
@@ -353,7 +350,7 @@ export default function App() {
                 <strong>{zone || '-'}</strong>
               </div>
 
-              <div className="flex justify-between text-2xl mt-6">
+              <div className="flex justify-between items-center text-2xl mt-6">
                 <span>Transporte</span>
                 <strong>
                   {typeof shippingPrice === 'number'
@@ -363,8 +360,6 @@ export default function App() {
               </div>
             </div>
           </div>
-        </div>
-
         </div>
       </div>
     </div>
