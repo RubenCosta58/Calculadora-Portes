@@ -193,21 +193,17 @@ export default function App() {
 
       <div className="max-w-6xl mx-auto">
 
-        {/* LOGO PEQUENO CANTO ESQUERDO */}
+        {/* LOGO PEQUENO */}
 
-        <div className="mb-12">
-
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-32 object-contain"
-          />
-
-        </div>
+        <img
+          src={logo}
+          alt="Logo"
+          className="w-20 mb-12"
+        />
 
         {/* REFERÊNCIAS */}
 
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
+        <div className="grid md:grid-cols-2 gap-6 mb-28">
 
           {renderReference(
             "Referência 1",
@@ -247,11 +243,11 @@ export default function App() {
 
         </div>
 
-        {/* CÓDIGO POSTAL DESTACADO */}
+        {/* BLOCO ISOLADO CÓDIGO POSTAL */}
 
-        <div className="bg-black rounded-3xl shadow-2xl p-10 mb-20">
+        <div className="bg-black rounded-3xl p-12 mb-28 shadow-2xl">
 
-          <div className="text-white text-5xl font-black text-center mb-8 tracking-widest">
+          <div className="text-white text-center text-6xl font-black mb-10">
             CÓDIGO POSTAL
           </div>
 
@@ -262,7 +258,7 @@ export default function App() {
               setPostalCode(e.target.value)
             }
             placeholder="2750-440"
-            className="w-full rounded-2xl p-8 text-6xl font-black text-center border-4 border-white"
+            className="w-full rounded-3xl p-10 text-7xl font-black text-center border-4 border-white"
           />
 
         </div>
@@ -349,5 +345,6 @@ export default function App() {
       </div>
 
     </div>
+
   );
 }
