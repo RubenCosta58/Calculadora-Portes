@@ -198,7 +198,12 @@ export default function App() {
         <img
           src={logo}
           alt="Logo"
-          className="w-20 h-20 object-contain mb-16"
+          style={{
+            width: "80px",
+            height: "80px",
+            objectFit: "contain",
+            marginBottom: "40px",
+          }}
         />
 
         {/* REFERÊNCIAS */}
@@ -243,11 +248,29 @@ export default function App() {
 
         </div>
 
-        {/* BLOCO SEPARADO CÓDIGO POSTAL */}
+        {/* BLOCO DESTACADO CÓDIGO POSTAL */}
 
-        <div className="bg-black rounded-3xl p-12 mb-32 shadow-2xl">
+        <div
+          style={{
+            background: "#000",
+            padding: "50px",
+            borderRadius: "30px",
+            marginBottom: "120px",
+            marginTop: "40px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+          }}
+        >
 
-          <div className="text-white text-center text-6xl font-black mb-10 tracking-widest">
+          <div
+            style={{
+              color: "#fff",
+              fontSize: "54px",
+              fontWeight: "900",
+              textAlign: "center",
+              marginBottom: "30px",
+              letterSpacing: "4px",
+            }}
+          >
             CÓDIGO POSTAL
           </div>
 
@@ -258,7 +281,15 @@ export default function App() {
               setPostalCode(e.target.value)
             }
             placeholder="2750-440"
-            className="w-full rounded-3xl p-10 text-7xl font-black text-center border-4 border-white"
+            style={{
+              width: "100%",
+              padding: "35px",
+              fontSize: "64px",
+              fontWeight: "900",
+              textAlign: "center",
+              borderRadius: "20px",
+              border: "4px solid white",
+            }}
           />
 
         </div>
