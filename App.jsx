@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 
-import logo from "./logo.png";
+import logo from "./G1-LOGO.jpg";
 
 import { products } from "./products";
 import { getZone, getShipping } from "./transport";
