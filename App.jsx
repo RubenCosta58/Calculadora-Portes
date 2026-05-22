@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 
-import logo from "../logo.png";
-
 import { products } from "./products";
 import { getZone, getShipping } from "./transport";
 
 export default function App() {
+
   const [postalCode, setPostalCode] = useState("");
 
   const [ref1, setRef1] = useState(products[0]?.ref || "");
@@ -69,6 +68,7 @@ export default function App() {
       : "0.00";
 
   const exportPDF = () => {
+
     const doc = new jsPDF();
 
     doc.setFontSize(22);
@@ -130,6 +130,7 @@ export default function App() {
     setSqm,
     boxes
   ) => (
+
     <div className="bg-white rounded-2xl shadow p-6">
 
       <label className="block text-xl font-bold mb-3">
@@ -143,14 +144,18 @@ export default function App() {
         }
         className="w-full border rounded-xl p-4 mb-4"
       >
+
         {products.map((p) => (
+
           <option
             key={p.ref}
             value={p.ref}
           >
             {p.ref}
           </option>
+
         ))}
+
       </select>
 
       <label className="block font-semibold mb-2">
@@ -168,16 +173,20 @@ export default function App() {
       />
 
       <div className="mt-4 text-lg">
+
         <strong>
           Caixas necessárias:
         </strong>{" "}
         {boxes}
+
       </div>
 
     </div>
+
   );
 
   return (
+
     <div className="min-h-screen bg-gray-100 p-8">
 
       <div className="max-w-6xl mx-auto">
@@ -185,7 +194,7 @@ export default function App() {
         <div className="flex items-center gap-6 mb-10">
 
           <img
-            src={logo}
+            src="logo.png"
             alt="Logo"
             className="w-40 object-contain"
           />
@@ -334,5 +343,6 @@ export default function App() {
       </div>
 
     </div>
+
   );
 }
