@@ -193,12 +193,12 @@ export default function App() {
 
       <div className="max-w-6xl mx-auto">
 
-        <div className="flex items-center gap-6 mb-10">
+        <div className="flex items-center gap-6 mb-12">
 
           <img
             src={logo}
             alt="Logo"
-            className="w-40 object-contain"
+            className="w-44 object-contain"
           />
 
           <h1 className="text-5xl font-bold">
@@ -207,7 +207,7 @@ export default function App() {
 
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-10">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
 
           {renderReference(
             "Referência 1",
@@ -247,10 +247,12 @@ export default function App() {
 
         </div>
 
-        <div className="bg-white rounded-3xl shadow-xl p-8 mb-10">
+        {/* BLOCO DESTACADO CÓDIGO POSTAL */}
 
-          <div className="text-3xl font-bold mb-4">
-            CÓDIGO POSTAL:
+        <div className="bg-black text-white rounded-3xl shadow-2xl p-10 mb-16 text-center">
+
+          <div className="text-5xl font-extrabold mb-6 tracking-wider">
+            CÓDIGO POSTAL
           </div>
 
           <input
@@ -260,7 +262,7 @@ export default function App() {
               setPostalCode(e.target.value)
             }
             placeholder="2750-440"
-            className="w-full border rounded-2xl p-6 text-5xl font-bold"
+            className="w-full border-4 border-white rounded-2xl p-8 text-6xl font-black text-center text-black"
           />
 
         </div>
