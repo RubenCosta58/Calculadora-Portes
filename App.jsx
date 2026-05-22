@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 
-import logo from "./G1-LOGO.jpg";
-
 import { products } from "./products";
 import { getZone, getShipping } from "./transport";
 
@@ -193,10 +191,10 @@ export default function App() {
 
       <div className="max-w-6xl mx-auto">
 
-        {/* LOGO PEQUENO */}
+        {/* LOGO */}
 
         <img
-          src={logo}
+          src="/G1-LOGO.jpg"
           alt="Logo"
           style={{
             width: "80px",
@@ -248,7 +246,7 @@ export default function App() {
 
         </div>
 
-        {/* BLOCO DESTACADO CÓDIGO POSTAL */}
+        {/* BLOCO CÓDIGO POSTAL */}
 
         <div
           style={{
@@ -257,7 +255,6 @@ export default function App() {
             borderRadius: "30px",
             marginBottom: "120px",
             marginTop: "40px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
           }}
         >
 
@@ -376,6 +373,5 @@ export default function App() {
       </div>
 
     </div>
-
   );
 }
