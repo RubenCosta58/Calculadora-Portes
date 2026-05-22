@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 
-import logo from "./logo.png";
+import logo from "../logo.png";
 
 import { products } from "./products";
 import { getZone, getShipping } from "./transport";
@@ -9,20 +9,20 @@ import { getZone, getShipping } from "./transport";
 export default function App() {
   const [postalCode, setPostalCode] = useState("");
 
-  const [ref1, setRef1] = useState(products[0].ref);
-  const [ref2, setRef2] = useState(products[0].ref);
-  const [ref3, setRef3] = useState(products[0].ref);
-  const [ref4, setRef4] = useState(products[0].ref);
+  const [ref1, setRef1] = useState(products[0]?.ref || "");
+  const [ref2, setRef2] = useState(products[0]?.ref || "");
+  const [ref3, setRef3] = useState(products[0]?.ref || "");
+  const [ref4, setRef4] = useState(products[0]?.ref || "");
 
   const [sqm1, setSqm1] = useState("");
   const [sqm2, setSqm2] = useState("");
   const [sqm3, setSqm3] = useState("");
   const [sqm4, setSqm4] = useState("");
 
-  const p1 = products.find((p) => p.ref === ref1);
-  const p2 = products.find((p) => p.ref === ref2);
-  const p3 = products.find((p) => p.ref === ref3);
-  const p4 = products.find((p) => p.ref === ref4);
+  const p1 = products.find((p) => p.ref === ref1) || {};
+  const p2 = products.find((p) => p.ref === ref2) || {};
+  const p3 = products.find((p) => p.ref === ref3) || {};
+  const p4 = products.find((p) => p.ref === ref4) || {};
 
   const calcBoxes = (sqm, sqmBox) => {
     if (!sqm || !sqmBox) return 0;
@@ -41,10 +41,10 @@ export default function App() {
     boxes4;
 
   const totalWeightProducts =
-    boxes1 * p1.kgBox +
-    boxes2 * p2.kgBox +
-    boxes3 * p3.kgBox +
-    boxes4 * p4.kgBox;
+    boxes1 * (p1.kgBox || 0) +
+    boxes2 * (p2.kgBox || 0) +
+    boxes3 * (p3.kgBox || 0) +
+    boxes4 * (p4.kgBox || 0);
 
   const palletWeight =
     totalWeightProducts > 0 ? 18 : 0;
@@ -53,10 +53,10 @@ export default function App() {
     totalWeightProducts + palletWeight;
 
   const realTotalSqm =
-    boxes1 * p1.sqmBox +
-    boxes2 * p2.sqmBox +
-    boxes3 * p3.sqmBox +
-    boxes4 * p4.sqmBox;
+    boxes1 * (p1.sqmBox || 0) +
+    boxes2 * (p2.sqmBox || 0) +
+    boxes3 * (p3.sqmBox || 0) +
+    boxes4 * (p4.sqmBox || 0);
 
   const zone = getZone(postalCode);
 
@@ -72,6 +72,7 @@ export default function App() {
     const doc = new jsPDF();
 
     doc.setFontSize(22);
+
     doc.text(
       "Calculadora de Portes DUNE",
       20,
@@ -130,6 +131,7 @@ export default function App() {
     boxes
   ) => (
     <div className="bg-white rounded-2xl shadow p-6">
+
       <label className="block text-xl font-bold mb-3">
         {title}
       </label>
@@ -142,7 +144,10 @@ export default function App() {
         className="w-full border rounded-xl p-4 mb-4"
       >
         {products.map((p) => (
-          <option key={p.ref}>
+          <option
+            key={p.ref}
+            value={p.ref}
+          >
             {p.ref}
           </option>
         ))}
@@ -168,11 +173,13 @@ export default function App() {
         </strong>{" "}
         {boxes}
       </div>
+
     </div>
   );
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
+
       <div className="max-w-6xl mx-auto">
 
         <div className="flex items-center gap-6 mb-10">
@@ -325,6 +332,7 @@ export default function App() {
         </button>
 
       </div>
+
     </div>
   );
 }
