@@ -169,11 +169,14 @@ export default function App() {
     },
   ];
 
-  const [selectedProduct, setSelectedProduct] = useState(products[0].ref);
+  const [selectedProduct1, setSelectedProduct1] = useState(products[0].ref);
+  const [selectedProduct2, setSelectedProduct2] = useState(products[0].ref);
+  const [selectedProduct3, setSelectedProduct3] = useState(products[0].ref);
+  const [selectedProduct4, setSelectedProduct4] = useState(products[0].ref);
   const [sqm, setSqm] = useState('');
   const [postalCode, setPostalCode] = useState('');
 
-  const product = products.find((p) => p.ref === selectedProduct);
+  const product = products.find((p) => p.ref === selectedProduct1);
 
   const boxes = sqm
     ? Math.ceil(parseFloat(sqm) / product.realSqm)
@@ -197,24 +200,32 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">
-            Calculadora de Portes Cerâmica
-          </h1>
+        <div className="mb-8 flex items-center gap-4">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-28 object-contain"
+          />
+
+          <div>
+            <h1 className="text-4xl font-bold mb-2">
+              Calculadora de Portes Cerâmica
+            </h1>
           <p className="text-gray-500">
-            Dune + DSV | Ferramenta local
-          </p>
+              Dune + DSV | Ferramenta local
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div>
             <label className="block text-sm font-medium mb-2">
               Referência
             </label>
             <select
               className="w-full border rounded-2xl p-3"
-              value={selectedProduct}
-              onChange={(e) => setSelectedProduct(e.target.value)}
+              value={selectedProduct1}
+              onChange={(e) => setSelectedProduct1(e.target.value)}
             >
               {products.map((p) => (
                 <option key={p.ref}>{p.ref}</option>
@@ -247,31 +258,77 @@ export default function App() {
               placeholder="2750-440"
             />
           </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div>
+            <label className="block text-sm font-medium mb-2">
+              Referência 2
+            </label>
+            <select
+              className="w-full border rounded-2xl p-3"
+              value={selectedProduct2}
+              onChange={(e) => setSelectedProduct2(e.target.value)}
+            >
+              {products.map((p) => (
+                <option key={p.ref}>{p.ref}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">
+              Referência 3
+            </label>
+            <select
+              className="w-full border rounded-2xl p-3"
+              value={selectedProduct3}
+              onChange={(e) => setSelectedProduct3(e.target.value)}
+            >
+              {products.map((p) => (
+                <option key={p.ref}>{p.ref}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">
+              Referência 4
+            </label>
+            <select
+              className="w-full border rounded-2xl p-3"
+              value={selectedProduct4}
+              onChange={(e) => setSelectedProduct4(e.target.value)}
+            >
+              {products.map((p) => (
+                <option key={p.ref}>{p.ref}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="bg-gray-50 rounded-2xl p-6">
             <h2 className="text-xl font-semibold mb-4">
               Dados do Produto
             </h2>
 
             <div className="space-y-3">
-              <div className="flex justify-between">
-                <span>m² catálogo / caixa</span>
+              <div className="flex justify-between items-center py-1 gap-10">
+                <span>m² / caixa</span>
                 <strong>{product.sqmBox}</strong>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center py-1 gap-10">
                 <span>kg / caixa</span>
                 <strong>{product.kgBox} kg</strong>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center py-1 gap-10">
                 <span>Caixas necessárias</span>
                 <strong>{boxes}</strong>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center py-1 gap-10">
                 <span>m² reais finais</span>
                 <strong>{realTotalSqm} m²</strong>
               </div>
@@ -284,12 +341,12 @@ export default function App() {
             </h2>
 
             <div className="space-y-3">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center py-1 gap-10">
                 <span>Peso Total</span>
                 <strong>{totalWeight.toFixed(2)} kg</strong>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center py-1 gap-10">
                 <span>Zona</span>
                 <strong>{zone || '-'}</strong>
               </div>
@@ -306,17 +363,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-2xl p-4 text-sm text-yellow-800">
-          Próximos passos:
-          <ul className="list-disc ml-5 mt-2 space-y-1">
-            <li>Importação automática do catálogo Dune</li>
-            <li>Leitura completa da tabela DSV</li>
-            <li>Múltiplas marcas</li>
-            <li>Exportação PDF</li>
-            <li>Margens comerciais automáticas</li>
-          </ul>
         </div>
-      </div>
     </div>
   );
 }
