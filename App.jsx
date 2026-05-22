@@ -204,23 +204,21 @@ export default function App() {
           <img
             src="/logo.png"
             alt="Logo"
-            className="w-28 object-contain"
+            className="w-40 object-contain mb-2"
           />
 
           <div>
             <h1 className="text-4xl font-bold mb-2">
-              Calculadora de Portes Cerâmica
+              Calculadora de Portes DUNE
             </h1>
-            <p className="text-gray-500">
-              Dune + DSV | Ferramenta local
-            </p>
+            
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 gap-8 mb-12 max-w-2xl">
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Referência
+            <label className="block text-lg font-semibold mb-2">
+              Referência 1 :
             </label>
             <select
               className="w-full border rounded-2xl p-3"
@@ -234,8 +232,8 @@ export default function App() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Quantidade (m²)
+            <label className="block text-lg font-semibold mb-2">
+              Quantidade:
             </label>
             <input
               type="number"
@@ -247,8 +245,8 @@ export default function App() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Código Postal
+            <label className="block text-xl font-bold mt-6 mb-2">
+              CÓDIGO POSTAL
             </label>
             <input
               type="text"
@@ -260,8 +258,8 @@ export default function App() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Referência 2
+            <label className="block text-lg font-semibold mb-2">
+              Referência 2 :
             </label>
             <select
               className="w-full border rounded-2xl p-3"
@@ -275,8 +273,8 @@ export default function App() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Referência 3
+            <label className="block text-lg font-semibold mb-2">
+              Referência 3 :
             </label>
             <select
               className="w-full border rounded-2xl p-3"
@@ -290,8 +288,8 @@ export default function App() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Referência 4
+            <label className="block text-lg font-semibold mb-2">
+              Referência 4 :
             </label>
             <select
               className="w-full border rounded-2xl p-3"
@@ -305,53 +303,53 @@ export default function App() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mt-10">
           <div className="bg-gray-50 rounded-2xl p-6">
-            <h2 className="text-xl font-semibold mb-4">
+            <h2 className="text-3xl font-bold mb-6">
               Dados do Produto
             </h2>
 
             <div className="space-y-3">
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>m² / caixa</span>
+                <span>m2 / caixa -</span>
                 <strong>{product.sqmBox}</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>kg / caixa</span>
+                <span>kg / caixa -</span>
                 <strong>{product.kgBox} kg</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>Caixas necessárias</span>
+                <span>Caixas necessárias -</span>
                 <strong>{boxes}</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>m² reais finais</span>
+                <span>m2 reais finais -</span>
                 <strong>{realTotalSqm} m²</strong>
               </div>
             </div>
           </div>
 
           <div className="bg-black text-white rounded-2xl p-6">
-            <h2 className="text-xl font-semibold mb-4">
+            <h2 className="text-3xl font-bold mb-6">
               Resultado Transporte
             </h2>
 
             <div className="space-y-3">
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>Peso Total</span>
+                <span>Peso Total -</span>
                 <strong>{totalWeight.toFixed(2)} kg</strong>
               </div>
 
               <div className="flex justify-between items-center py-1 gap-10">
-                <span>Zona</span>
+                <span>Zona -</span>
                 <strong>{zone || '-'}</strong>
               </div>
 
               <div className="flex justify-between items-center text-2xl mt-6">
-                <span>Transporte</span>
+                <span>Valor -</span>
                 <strong>
                   {typeof shippingPrice === 'number'
                     ? `${shippingPrice.toFixed(2)} €`
