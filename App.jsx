@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 
+import logo from "../logo.png";
+
 import { products } from "./products";
 import { getZone, getShipping } from "./transport";
 
@@ -194,7 +196,7 @@ export default function App() {
         <div className="flex items-center gap-6 mb-10">
 
           <img
-            src="logo.png"
+            src={logo}
             alt="Logo"
             className="w-40 object-contain"
           />
@@ -343,6 +345,5 @@ export default function App() {
       </div>
 
     </div>
-
   );
 }
