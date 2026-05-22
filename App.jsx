@@ -263,7 +263,6 @@ export default function App() {
             <h1 className="text-4xl font-bold mb-2">
               Calculadora de Portes DUNE
             </h1>
-            
           </div>
         </div>
 
@@ -272,11 +271,7 @@ export default function App() {
             <label className="block text-lg font-semibold mb-2">
               Referência 1 :
             </label>
-            <select
-              className="w-full border rounded-2xl p-3"
-              value={selectedProduct1}
-              onChange={(e) => setSelectedProduct1(e.target.value)}
-            >
+            <select className="w-full border rounded-2xl p-3" value={selectedProduct1} onChange={(e) => setSelectedProduct1(e.target.value)}>
               {products.map((p) => (
                 <option key={p.ref}>{p.ref}</option>
               ))}
@@ -287,57 +282,15 @@ export default function App() {
             <label className="block text-lg font-semibold mb-2">
               Quantidade:
             </label>
-            <div className="text-sm text-gray-500 mb-2">
-              Caixas necessárias: {boxes1}
-            </div>
-            <input
-              type="number"
-              className="w-full border rounded-2xl p-3"
-              value={sqm1}
-              onChange={(e) => setSqm1(e.target.value)}
-              placeholder="Ex: 32"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xl font-bold mt-6 mb-2">
-              CÓDIGO POSTAL
-            </label>
-            <input
-              type="text"
-              className="w-full border rounded-2xl p-3"
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-              placeholder="2750-440"
-            />
-          </div>
-
-          <div>
-            <label className="block text-lg font-semibold mb-2">
-              Quantidade:
-            </label>
-            <input
-              type="number"
-              className="w-full border rounded-2xl p-3"
-              value={sqm2}
-              onChange={(e) => setSqm2(e.target.value)}
-              placeholder="Ex: 12"
-            />
-            <div className="text-sm text-gray-500 mt-2">
-              Caixas necessárias: {boxes2}
-            </div>
-            />
+            <input type="number" className="w-full border rounded-2xl p-3" value={sqm1} onChange={(e) => setSqm1(e.target.value)} placeholder="Ex: 32" />
+            <div className="text-sm text-gray-500 mt-2">Caixas necessárias: {boxes1}</div>
           </div>
 
           <div>
             <label className="block text-lg font-semibold mb-2">
               Referência 2 :
             </label>
-            <select
-              className="w-full border rounded-2xl p-3"
-              value={selectedProduct2}
-              onChange={(e) => setSelectedProduct2(e.target.value)}
-            >
+            <select className="w-full border rounded-2xl p-3" value={selectedProduct2} onChange={(e) => setSelectedProduct2(e.target.value)}>
               {products.map((p) => (
                 <option key={p.ref}>{p.ref}</option>
               ))}
@@ -348,28 +301,15 @@ export default function App() {
             <label className="block text-lg font-semibold mb-2">
               Quantidade:
             </label>
-            <input
-              type="number"
-              className="w-full border rounded-2xl p-3"
-              value={sqm3}
-              onChange={(e) => setSqm3(e.target.value)}
-              placeholder="Ex: 8"
-            />
-            <div className="text-sm text-gray-500 mt-2">
-              Caixas necessárias: {boxes3}
-            </div>
-            />
+            <input type="number" className="w-full border rounded-2xl p-3" value={sqm2} onChange={(e) => setSqm2(e.target.value)} placeholder="Ex: 12" />
+            <div className="text-sm text-gray-500 mt-2">Caixas necessárias: {boxes2}</div>
           </div>
 
           <div>
             <label className="block text-lg font-semibold mb-2">
               Referência 3 :
             </label>
-            <select
-              className="w-full border rounded-2xl p-3"
-              value={selectedProduct3}
-              onChange={(e) => setSelectedProduct3(e.target.value)}
-            >
+            <select className="w-full border rounded-2xl p-3" value={selectedProduct3} onChange={(e) => setSelectedProduct3(e.target.value)}>
               {products.map((p) => (
                 <option key={p.ref}>{p.ref}</option>
               ))}
@@ -380,40 +320,40 @@ export default function App() {
             <label className="block text-lg font-semibold mb-2">
               Quantidade:
             </label>
-            <input
-              type="number"
-              className="w-full border rounded-2xl p-3"
-              value={sqm4}
-              onChange={(e) => setSqm4(e.target.value)}
-              placeholder="Ex: 5"
-            />
-            <div className="text-sm text-gray-500 mt-2">
-              Caixas necessárias: {boxes4}
-            </div>
-            />
+            <input type="number" className="w-full border rounded-2xl p-3" value={sqm3} onChange={(e) => setSqm3(e.target.value)} placeholder="Ex: 8" />
+            <div className="text-sm text-gray-500 mt-2">Caixas necessárias: {boxes3}</div>
           </div>
 
           <div>
             <label className="block text-lg font-semibold mb-2">
               Referência 4 :
             </label>
-            <select
-              className="w-full border rounded-2xl p-3"
-              value={selectedProduct4}
-              onChange={(e) => setSelectedProduct4(e.target.value)}
-            >
+            <select className="w-full border rounded-2xl p-3" value={selectedProduct4} onChange={(e) => setSelectedProduct4(e.target.value)}>
               {products.map((p) => (
                 <option key={p.ref}>{p.ref}</option>
               ))}
             </select>
           </div>
+
+          <div>
+            <label className="block text-lg font-semibold mb-2">
+              Quantidade:
+            </label>
+            <input type="number" className="w-full border rounded-2xl p-3" value={sqm4} onChange={(e) => setSqm4(e.target.value)} placeholder="Ex: 5" />
+            <div className="text-sm text-gray-500 mt-2">Caixas necessárias: {boxes4}</div>
+          </div>
+
+          <div>
+            <label className="block text-xl font-bold mt-6 mb-2">
+              CÓDIGO POSTAL:
+            </label>
+            <input type="text" className="w-full border rounded-2xl p-3" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} placeholder="2750-440" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mt-10">
           <div className="bg-gray-50 rounded-2xl p-6">
-            <h2 className="text-3xl font-bold mb-6">
-              Dados do Produto
-            </h2>
+            <h2 className="text-3xl font-bold mb-6">Dados do Produto</h2>
 
             <div className="space-y-3">
               <div className="flex justify-between items-center py-1 gap-10">
@@ -439,9 +379,7 @@ export default function App() {
           </div>
 
           <div className="bg-black text-white rounded-2xl p-6">
-            <h2 className="text-3xl font-bold mb-6">
-              Resultado Transporte
-            </h2>
+            <h2 className="text-3xl font-bold mb-6">Resultado Transporte</h2>
 
             <div className="space-y-3">
               <div className="flex justify-between items-center py-1 gap-10">
@@ -459,20 +397,20 @@ export default function App() {
                 <strong>{palletCount}</strong>
               </div>
 
-              
-
               <div className="flex justify-between items-center text-2xl mt-6">
                 <span>Valor -</span>
-                <strong>
-                  `${shippingPrice} €`
-                </strong>
-              <button
-            onClick={exportPDF}
-            className="mt-10 bg-black text-white px-6 py-4 rounded-2xl font-semibold hover:opacity-90 transition"
-          >
-            Exportar PDF
-          </button>
+                <strong>{shippingPrice} €</strong>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <button
+          onClick={exportPDF}
+          className="mt-10 bg-black text-white px-6 py-4 rounded-2xl font-semibold hover:opacity-90 transition"
+        >
+          Exportar PDF
+        </button>
       </div>
     </div>
   );
