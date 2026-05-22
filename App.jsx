@@ -133,7 +133,7 @@ export default function App() {
 
     <div className="bg-white rounded-2xl shadow p-6">
 
-      <label className="block text-xl font-bold mb-3">
+      <label className="block text-lg font-bold mb-3">
         {title}
       </label>
 
@@ -142,7 +142,7 @@ export default function App() {
         onChange={(e) =>
           setRef(e.target.value)
         }
-        className="w-full border rounded-xl p-4 mb-4"
+        className="w-full border rounded-xl p-3 mb-4"
       >
 
         {products.map((p) => (
@@ -169,7 +169,7 @@ export default function App() {
           setSqm(e.target.value)
         }
         placeholder="Ex: 12"
-        className="w-full border rounded-xl p-4"
+        className="w-full border rounded-xl p-3"
       />
 
       <div className="mt-4 text-lg">
@@ -194,19 +194,20 @@ export default function App() {
         {/* LOGO */}
 
         <img
-          src="/G1-LOGO.jpg"
+          src="/G1 Logo.png"
           alt="Logo"
           style={{
-            width: "80px",
-            height: "80px",
+            width: "60px",
+            height: "60px",
             objectFit: "contain",
-            marginBottom: "40px",
+            display: "block",
+            marginBottom: "30px",
           }}
         />
 
         {/* REFERÊNCIAS */}
 
-        <div className="grid md:grid-cols-2 gap-6 mb-32">
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
 
           {renderReference(
             "Referência 1",
@@ -246,26 +247,29 @@ export default function App() {
 
         </div>
 
-        {/* BLOCO CÓDIGO POSTAL */}
+        {/* CÓDIGO POSTAL */}
 
         <div
           style={{
             background: "#000",
-            padding: "50px",
-            borderRadius: "30px",
-            marginBottom: "120px",
-            marginTop: "40px",
+            padding: "30px",
+            borderRadius: "25px",
+            marginBottom: "80px",
+            marginTop: "30px",
+            maxWidth: "700px",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         >
 
           <div
             style={{
               color: "#fff",
-              fontSize: "54px",
-              fontWeight: "900",
+              fontSize: "32px",
+              fontWeight: "800",
               textAlign: "center",
-              marginBottom: "30px",
-              letterSpacing: "4px",
+              marginBottom: "20px",
+              letterSpacing: "2px",
             }}
           >
             CÓDIGO POSTAL
@@ -280,12 +284,12 @@ export default function App() {
             placeholder="2750-440"
             style={{
               width: "100%",
-              padding: "35px",
-              fontSize: "64px",
-              fontWeight: "900",
+              padding: "18px",
+              fontSize: "36px",
+              fontWeight: "700",
               textAlign: "center",
-              borderRadius: "20px",
-              border: "4px solid white",
+              borderRadius: "15px",
+              border: "3px solid white",
             }}
           />
 
@@ -297,11 +301,11 @@ export default function App() {
 
           <div className="bg-white rounded-3xl shadow-xl p-8">
 
-            <h2 className="text-4xl font-bold mb-8">
+            <h2 className="text-3xl font-bold mb-8">
               Dados do Produto
             </h2>
 
-            <div className="space-y-5 text-xl">
+            <div className="space-y-5 text-lg">
 
               <div>
                 <strong>
@@ -330,11 +334,11 @@ export default function App() {
 
           <div className="bg-black text-white rounded-3xl shadow-xl p-8">
 
-            <h2 className="text-4xl font-bold mb-8">
+            <h2 className="text-3xl font-bold mb-8">
               Resultado Transporte
             </h2>
 
-            <div className="space-y-5 text-xl">
+            <div className="space-y-5 text-lg">
 
               <div>
                 <strong>
@@ -365,7 +369,7 @@ export default function App() {
 
         <button
           onClick={exportPDF}
-          className="mt-10 bg-black text-white px-8 py-5 rounded-2xl text-xl font-bold hover:opacity-90"
+          className="mt-10 bg-black text-white px-8 py-4 rounded-2xl text-lg font-bold hover:opacity-90"
         >
           Exportar PDF
         </button>
