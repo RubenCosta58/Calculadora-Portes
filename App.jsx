@@ -193,21 +193,21 @@ export default function App() {
 
       <div className="max-w-6xl mx-auto">
 
-        <div className="flex items-center gap-6 mb-12">
+        {/* LOGO PEQUENO CANTO ESQUERDO */}
+
+        <div className="mb-12">
 
           <img
             src={logo}
             alt="Logo"
-            className="w-44 object-contain"
+            className="w-32 object-contain"
           />
-
-          <h1 className="text-5xl font-bold">
-            Calculadora de Portes DUNE
-          </h1>
 
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        {/* REFERÊNCIAS */}
+
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
 
           {renderReference(
             "Referência 1",
@@ -247,11 +247,11 @@ export default function App() {
 
         </div>
 
-        {/* BLOCO DESTACADO CÓDIGO POSTAL */}
+        {/* CÓDIGO POSTAL DESTACADO */}
 
-        <div className="bg-black text-white rounded-3xl shadow-2xl p-10 mb-16 text-center">
+        <div className="bg-black rounded-3xl shadow-2xl p-10 mb-20">
 
-          <div className="text-5xl font-extrabold mb-6 tracking-wider">
+          <div className="text-white text-5xl font-black text-center mb-8 tracking-widest">
             CÓDIGO POSTAL
           </div>
 
@@ -262,10 +262,12 @@ export default function App() {
               setPostalCode(e.target.value)
             }
             placeholder="2750-440"
-            className="w-full border-4 border-white rounded-2xl p-8 text-6xl font-black text-center text-black"
+            className="w-full rounded-2xl p-8 text-6xl font-black text-center border-4 border-white"
           />
 
         </div>
+
+        {/* RESULTADOS */}
 
         <div className="grid md:grid-cols-2 gap-8">
 
