@@ -1,32 +1,53 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import jsPDF from "jspdf";
 
 const products = [
-  {
-    ref: "Alfar 6,5x20",
-    sqmBox: 0.624,
-    kgBox: 8.64,
-  },
-  {
-    ref: "Milano 6,9x24",
-    sqmBox: 0.5,
-    kgBox: 9.2,
-  },
-  {
-    ref: "Meknes 6,2x25",
-    sqmBox: 0.62,
-    kgBox: 8.8,
-  },
-  {
-    ref: "Atlantique 20x20",
-    sqmBox: 1,
-    kgBox: 18,
-  },
-  {
-    ref: "Fragmenta 20x20",
-    sqmBox: 1,
-    kgBox: 17.5,
-  },
+  { ref: "Agadir", sqmBox: 0.68, kgBox: 13.2 },
+  { ref: "Alfar 6,5x20", sqmBox: 0.624, kgBox: 8.64 },
+  { ref: "Altea 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
+  { ref: "Antiga 6,9x24", sqmBox: 0.7451, kgBox: 10.8 },
+  { ref: "Aqua", sqmBox: 0.68, kgBox: 13.1 },
+  { ref: "Ardesia", sqmBox: 1, kgBox: 18 },
+  { ref: "Atelier 7,5x15", sqmBox: 0.5399, kgBox: 9.12 },
+  { ref: "Atelier 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
+  { ref: "Atlantique 6,9x24", sqmBox: 0.7451, kgBox: 10.71 },
+  { ref: "Atlantique 20x20", sqmBox: 0.68, kgBox: 13.18 },
+  { ref: "Bali", sqmBox: 1, kgBox: 18 },
+  { ref: "Balmoral", sqmBox: 1, kgBox: 17.5 },
+  { ref: "Bambu", sqmBox: 1, kgBox: 17.8 },
+  { ref: "Barraquetes 20x20", sqmBox: 0.68, kgBox: 12.82 },
+  { ref: "Bayonne 20x20", sqmBox: 0.68, kgBox: 12.6 },
+  { ref: "Bellamira", sqmBox: 0.68, kgBox: 13 },
+  { ref: "Berlin", sqmBox: 1, kgBox: 18 },
+  { ref: "Black", sqmBox: 1, kgBox: 18 },
+  { ref: "Brera", sqmBox: 0.68, kgBox: 13 },
+  { ref: "Buckingham", sqmBox: 1, kgBox: 18 },
+  { ref: "Cabanyal 20x20", sqmBox: 0.68, kgBox: 12.82 },
+  { ref: "Canterbury", sqmBox: 1, kgBox: 18 },
+  { ref: "Carme", sqmBox: 1, kgBox: 18 },
+  { ref: "Carmine", sqmBox: 1, kgBox: 18 },
+  { ref: "Catalina", sqmBox: 0.68, kgBox: 13.1 },
+  { ref: "Chicago", sqmBox: 1, kgBox: 18 },
+  { ref: "Coimbra", sqmBox: 1, kgBox: 18 },
+  { ref: "Colonia", sqmBox: 1, kgBox: 18 },
+  { ref: "Corfu", sqmBox: 1, kgBox: 18 },
+  { ref: "Creta", sqmBox: 1, kgBox: 18 },
+  { ref: "Duomo", sqmBox: 0.68, kgBox: 13.1 },
+  { ref: "Emanuele", sqmBox: 0.68, kgBox: 13.1 },
+  { ref: "Evora", sqmBox: 1, kgBox: 18 },
+  { ref: "Exa", sqmBox: 1, kgBox: 18 },
+  { ref: "Faro", sqmBox: 1, kgBox: 18 },
+  { ref: "Flat", sqmBox: 1.2599, kgBox: 20.16 },
+  { ref: "Flat Iris Satin", sqmBox: 1.2599, kgBox: 20.16 },
+  { ref: "Flat Rainbow", sqmBox: 1.2599, kgBox: 20.16 },
+  { ref: "Flat Savannah", sqmBox: 0.2699, kgBox: 4.32 },
+  { ref: "Flora Lapis", sqmBox: 1, kgBox: 18 },
+  { ref: "Fragmenta 20x20", sqmBox: 0.68, kgBox: 13.19 },
+  { ref: "Garibaldi", sqmBox: 1, kgBox: 18 },
+  { ref: "Golden Stone", sqmBox: 1, kgBox: 18 },
+  { ref: "Granadella", sqmBox: 1, kgBox: 18 },
+  { ref: "Grazie", sqmBox: 1, kgBox: 18 },
+  { ref: "Greenland", sqmBox: 1, kgBox: 18 },
 ];
 
 const transportRates = {
@@ -161,10 +182,9 @@ export default function App() {
 
     doc.text(`Código Postal: ${postalCode}`, 20, 45);
     doc.text(`Zona: ${zone || "-"}`, 20, 55);
-
     doc.text(`Peso Total: ${totalWeight.toFixed(2)} kg`, 20, 75);
     doc.text(`Caixas Totais: ${totalBoxes}`, 20, 85);
-    doc.text(`m² reais finais: ${realTotalSqm.toFixed(2)} m²`, 20, 95);
+    doc.text(`m2 reais finais: ${realTotalSqm.toFixed(2)} m²`, 20, 95);
 
     doc.setFontSize(18);
     doc.text(`Valor Transporte: ${shippingPrice} €`, 20, 120);
@@ -226,41 +246,10 @@ export default function App() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {renderReference(
-            "Referência 1",
-            ref1,
-            setRef1,
-            sqm1,
-            setSqm1,
-            boxes1
-          )}
-
-          {renderReference(
-            "Referência 2",
-            ref2,
-            setRef2,
-            sqm2,
-            setSqm2,
-            boxes2
-          )}
-
-          {renderReference(
-            "Referência 3",
-            ref3,
-            setRef3,
-            sqm3,
-            setSqm3,
-            boxes3
-          )}
-
-          {renderReference(
-            "Referência 4",
-            ref4,
-            setRef4,
-            sqm4,
-            setSqm4,
-            boxes4
-          )}
+          {renderReference("Referência 1", ref1, setRef1, sqm1, setSqm1, boxes1)}
+          {renderReference("Referência 2", ref2, setRef2, sqm2, setSqm2, boxes2)}
+          {renderReference("Referência 3", ref3, setRef3, sqm3, setSqm3, boxes3)}
+          {renderReference("Referência 4", ref4, setRef4, sqm4, setSqm4, boxes4)}
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl p-8 mb-10">
@@ -285,22 +274,9 @@ export default function App() {
             </h2>
 
             <div className="space-y-5 text-xl">
-              <div>
-                <strong>m2 / caixa :</strong> {p1.sqmBox}
-              </div>
-
-              <div>
-                <strong>kg / caixa :</strong> {p1.kgBox} kg
-              </div>
-
-              <div>
-                <strong>Caixas necessárias :</strong> {totalBoxes}
-              </div>
-
-              <div>
-                <strong>m2 reais finais :</strong>{" "}
-                {realTotalSqm.toFixed(2)} m²
-              </div>
+              <div><strong>Caixas necessárias :</strong> {totalBoxes}</div>
+              <div><strong>m2 reais finais :</strong> {realTotalSqm.toFixed(2)} m²</div>
+              <div><strong>kg estimados :</strong> {totalWeight.toFixed(2)} kg</div>
             </div>
           </div>
 
@@ -310,18 +286,9 @@ export default function App() {
             </h2>
 
             <div className="space-y-5 text-xl">
-              <div>
-                <strong>Peso Total :</strong>{" "}
-                {totalWeight.toFixed(2)} kg
-              </div>
-
-              <div>
-                <strong>Zona :</strong> {zone || "-"}
-              </div>
-
-              <div>
-                <strong>Valor :</strong> {shippingPrice} €
-              </div>
+              <div><strong>Peso Total :</strong> {totalWeight.toFixed(2)} kg</div>
+              <div><strong>Zona :</strong> {zone || "-"}</div>
+              <div><strong>Valor :</strong> {shippingPrice} €</div>
             </div>
           </div>
         </div>
