@@ -384,6 +384,25 @@ export default function App() {
 
         <div
           style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "30px",
+          }}
+        >
+
+          <img
+            src="/logo.png"
+            alt="Logo"
+            style={{
+              width: "180px",
+              height: "auto",
+            }}
+          />
+
+        </div>
+
+        <div
+          style={{
             display: "grid",
             gridTemplateColumns:
               "1fr 1fr",
@@ -535,7 +554,7 @@ export default function App() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "1fr 1fr 1fr",
+              "1fr 1fr",
             gap: "25px",
           }}
         >
@@ -639,65 +658,6 @@ export default function App() {
                   Valor :
                 </strong>{" "}
                 {shippingPrice} €
-              </div>
-
-            </div>
-
-          </div>
-
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: "28px",
-              padding: "35px",
-            }}
-          >
-
-            <div
-              style={{
-                fontSize: "42px",
-                fontWeight: "bold",
-                marginBottom: "30px",
-              }}
-            >
-
-              Resumo Final
-
-            </div>
-
-            <div
-              style={{
-                fontSize: "28px",
-                lineHeight: "2.1",
-              }}
-            >
-
-              <div>
-                <strong>
-                  Produtos :
-                </strong>{" "}
-                {[
-                  product1,
-                  product2,
-                  product3,
-                  product4,
-                ]
-                  .filter(Boolean)
-                  .length}
-              </div>
-
-              <div>
-                <strong>
-                  Palete :
-                </strong>{" "}
-                {palletWeight} kg
-              </div>
-
-              <div>
-                <strong>
-                  Combustível :
-                </strong>{" "}
-                {fuelRate}%
               </div>
 
             </div>
