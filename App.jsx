@@ -175,11 +175,19 @@ export default function App() {
 
       <div className="max-w-7xl mx-auto">
 
-        <img
-          src="/logo.png"
-          alt="Logo"
-          className="w-12 mb-10"
-        />
+        {/* LOGO CENTRADO */}
+
+        <div className="flex justify-center mb-10">
+
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-20 h-auto"
+          />
+
+        </div>
+
+        {/* REFERÊNCIAS */}
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
 
@@ -221,6 +229,8 @@ export default function App() {
 
         </div>
 
+        {/* CÓDIGO POSTAL */}
+
         <div className="flex justify-center mb-14">
 
           <div className="bg-black rounded-3xl p-6 w-[420px]">
@@ -242,6 +252,8 @@ export default function App() {
           </div>
 
         </div>
+
+        {/* RESULTADOS */}
 
         <div className="grid md:grid-cols-2 gap-8">
 
