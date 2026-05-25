@@ -1,174 +1,349 @@
 export const products = [
-  { ref: "Piccola", sqmBox: 0.68, kgBox: 13.2 },
 
-  { ref: "Agadir", sqmBox: 0.68, kgBox: 13.2 },
-  { ref: "Agadir (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
-  { ref: "Agadir Cotto (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
-  { ref: "Agadir (7x28)", sqmBox: 0.882, kgBox: 16.65 },
-  { ref: "Agadir Cotto (7x28)", sqmBox: 0.882, kgBox: 16.65 },
+  // AGADIR
 
-  { ref: "Alfar 6,5x20", sqmBox: 0.624, kgBox: 8.64 },
-  { ref: "Alfar (6,5x20)", sqmBox: 0.624, kgBox: 8.64 },
+  {
+    ref: "Agadir | Agua | 188576",
+    sqmBox: 0.9507,
+    kgBox: 15.4
+  },
 
-  { ref: "Altea 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
-  { ref: "Altea (7,5x30)", sqmBox: 0.4949, kgBox: 7.92 },
+  {
+    ref: "Agadir | Lago | 188577",
+    sqmBox: 0.9507,
+    kgBox: 15.4
+  },
 
-  { ref: "Antiga 6,9x24", sqmBox: 0.7451, kgBox: 10.8 },
-  { ref: "Antiga (6,9x24)", sqmBox: 0.7451, kgBox: 10.8 },
-  { ref: "Antiga Blanco (20x20)", sqmBox: 0.68, kgBox: 13.11 },
+  {
+    ref: "Agadir | Cotto | 188578",
+    sqmBox: 0.9507,
+    kgBox: 15.4
+  },
 
-  { ref: "Atelier 7,5x15", sqmBox: 0.5399, kgBox: 9.12 },
-  { ref: "Atelier (7,5x15)", sqmBox: 0.5399, kgBox: 9.12 },
-  { ref: "Atelier (7,5x30)", sqmBox: 0.4949, kgBox: 7.92 },
+  // ALTEA
 
-  { ref: "Atelier 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
-  { ref: "Atlantique (6,9x24)", sqmBox: 0.7451, kgBox: 10.71 },
-  { ref: "Atlantique (20x20)", sqmBox: 0.68, kgBox: 13.18 },
+  {
+    ref: "Altea | White | 188640",
+    sqmBox: 1,
+    kgBox: 18.2
+  },
 
-  { ref: "Atlantique 6,9x24", sqmBox: 0.7451, kgBox: 10.71 },
-  { ref: "Bali (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  {
+    ref: "Altea | Sage | 188641",
+    sqmBox: 1,
+    kgBox: 18.2
+  },
 
-  { ref: "Atlantique 20x20", sqmBox: 0.68, kgBox: 13.18 },
-  { ref: "Barraquetes/Mareny/Cabanyal (20x20)", sqmBox: 0.68, kgBox: 12.82 },
+  // ATLANTIC
 
-  { ref: "Bali", sqmBox: 1, kgBox: 18 },
-  { ref: "Berlin Glossy (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
-  { ref: "Berlin Matt (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
-  { ref: "Berlin Exa (21,5x25)", sqmBox: 0.972, kgBox: 18.72 },
+  {
+    ref: "Atlantic | Blue | 188710",
+    sqmBox: 1,
+    kgBox: 18.6
+  },
 
-  { ref: "Berlin", sqmBox: 1, kgBox: 18 },
-  { ref: "Black & White (20x20)", sqmBox: 0.68, kgBox: 13.18 },
+  {
+    ref: "Atlantic | Green | 188711",
+    sqmBox: 1,
+    kgBox: 18.6
+  },
 
-  { ref: "Black & White", sqmBox: 1, kgBox: 18 },
-  { ref: "Chicago (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
-  { ref: "Chicago Exa (21,5x25)", sqmBox: 0.972, kgBox: 18.72 },
+  // BALI
 
-  { ref: "Chicago", sqmBox: 1, kgBox: 18 },
-  { ref: "Coimbra (20x20)", sqmBox: 0.68, kgBox: 12.82 },
+  {
+    ref: "Bali | Aqua | 188801",
+    sqmBox: 0.88,
+    kgBox: 16.2
+  },
 
-  { ref: "Crackle", sqmBox: 0.68, kgBox: 13 },
-  { ref: "Corfu (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  {
+    ref: "Bali | Green | 188802",
+    sqmBox: 0.88,
+    kgBox: 16.2
+  },
 
-  { ref: "Doria", sqmBox: 1, kgBox: 18 },
-  { ref: "Creta (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  // BERLIN
 
-  { ref: "Exa", sqmBox: 1, kgBox: 18 },
-  { ref: "Doria (20x20)", sqmBox: 0.68, kgBox: 14.03 },
+  {
+    ref: "Berlin | White | 188620",
+    sqmBox: 0.59,
+    kgBox: 11.2
+  },
 
-  { ref: "Flat", sqmBox: 1.2599, kgBox: 20.16 },
-  { ref: "Duomo (20x20)", sqmBox: 0.68, kgBox: 13.11 },
+  {
+    ref: "Berlin | Sage | 188621",
+    sqmBox: 0.59,
+    kgBox: 11.2
+  },
 
-  { ref: "Flat Deluxe", sqmBox: 1.2599, kgBox: 20.16 },
-  { ref: "Emanuele (20x20)", sqmBox: 0.68, kgBox: 13.11 },
+  {
+    ref: "Berlin | Navy | 188622",
+    sqmBox: 0.59,
+    kgBox: 11.2
+  },
 
-  { ref: "Flora Lapis", sqmBox: 1, kgBox: 18 },
-  { ref: "Evora (20x20)", sqmBox: 0.68, kgBox: 13.18 },
+  // CHICAGO
 
-  { ref: "Fragmenta 20x20", sqmBox: 0.68, kgBox: 13.19 },
-  { ref: "Exa (15x17)", sqmBox: 0.5014, kgBox: 9.13 },
+  {
+    ref: "Chicago | Bone | 188850",
+    sqmBox: 1.08,
+    kgBox: 19.4
+  },
 
-  { ref: "Golden Stone", sqmBox: 1, kgBox: 18 },
-  { ref: "Faro (20x20)", sqmBox: 0.68, kgBox: 13.18 },
+  {
+    ref: "Chicago | Grey | 188851",
+    sqmBox: 1.08,
+    kgBox: 19.4
+  },
 
-  { ref: "Granadella", sqmBox: 1, kgBox: 18 },
-  { ref: "Flat (7,5x30)", sqmBox: 0.4949, kgBox: 7.92 },
+  // DORIA
 
-  { ref: "Greenland", sqmBox: 1, kgBox: 18 },
-  { ref: "Flat Rainbow / Iris (7,5x30)", sqmBox: 1.2599, kgBox: 20.16 },
-  { ref: "Flat Savannah (7,5x30)", sqmBox: 0.2699, kgBox: 4.32 },
+  {
+    ref: "Doria | White | 188910",
+    sqmBox: 1.12,
+    kgBox: 20.1
+  },
 
-  { ref: "Iceberg", sqmBox: 1, kgBox: 18 },
-  { ref: "Flora Lapis (14,7x14,7)", sqmBox: 0.9507, kgBox: 17.12 },
+  {
+    ref: "Doria | Beige | 188911",
+    sqmBox: 1.12,
+    kgBox: 20.1
+  },
 
-  { ref: "Kit-Kat", sqmBox: 0.68, kgBox: 13 },
-  { ref: "Fragmenta (20x20)", sqmBox: 0.68, kgBox: 13.19 },
+  // FLORA
 
-  { ref: "Meknes 6,2x25", sqmBox: 0.5579, kgBox: 8.1 },
-  { ref: "Garibaldi (20x20)", sqmBox: 0.68, kgBox: 13.11 },
+  {
+    ref: "Flora | Mix | 188980",
+    sqmBox: 1.04,
+    kgBox: 18.7
+  },
 
-  { ref: "Metro 10x20", sqmBox: 0.8, kgBox: 10.4 },
-  { ref: "Golden Stone Glossy (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
-  { ref: "Golden Stone (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  // GOLDEN STONE
 
-  { ref: "Metro 7,5x15", sqmBox: 1.0124, kgBox: 12.6 },
-  { ref: "Grazie (20x20)", sqmBox: 0.68, kgBox: 13.11 },
+  {
+    ref: "Golden Stone | Sand | 189020",
+    sqmBox: 1.44,
+    kgBox: 23.5
+  },
 
-  { ref: "Mijaran", sqmBox: 1, kgBox: 18 },
-  { ref: "Granadella (11,5x11,5)", sqmBox: 0.5951, kgBox: 10.4 },
-  { ref: "Granadella (6,4x22,3)", sqmBox: 0.4567, kgBox: 7.46 },
+  {
+    ref: "Golden Stone | Grey | 189021",
+    sqmBox: 1.44,
+    kgBox: 23.5
+  },
 
-  { ref: "Milano 6,9x24", sqmBox: 0.7451, kgBox: 10.62 },
-  { ref: "Greenland Glossy (6,4x22,3)", sqmBox: 0.4567, kgBox: 8.64 },
-  { ref: "Greenland Matt (6,4x22,3)", sqmBox: 0.4567, kgBox: 8.64 },
-  { ref: "Greenland (14,7x14,7)", sqmBox: 0.9507, kgBox: 17.29 },
+  // GREENLAND
 
-  { ref: "Milano 20x20", sqmBox: 0.68, kgBox: 13.11 },
-  { ref: "Iceberg (6,4x22,3)", sqmBox: 0.4567, kgBox: 8.67 },
-  { ref: "Iceberg (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  {
+    ref: "Greenland | Moss | 189060",
+    sqmBox: 1,
+    kgBox: 18.9
+  },
 
-  { ref: "Mintons", sqmBox: 1, kgBox: 18 },
-  { ref: "Ima (10x40)", sqmBox: 1.12, kgBox: 12.99 },
+  // ICEBERG
 
-  { ref: "Renania 6,5x20", sqmBox: 0.624, kgBox: 8.64 },
-  { ref: "Kit-Kat Mosaic", sqmBox: 0.9595, kgBox: 12.1 },
+  {
+    ref: "Iceberg | White | 189110",
+    sqmBox: 1.2,
+    kgBox: 21.6
+  },
 
-  { ref: "Riad", sqmBox: 1, kgBox: 18 },
-  { ref: "Meknes (6,2x25)", sqmBox: 0.5579, kgBox: 8.1 },
-  { ref: "Meknes (12,5x12,5)", sqmBox: 0.9375, kgBox: 13.86 },
+  {
+    ref: "Iceberg | Grey | 189111",
+    sqmBox: 1.2,
+    kgBox: 21.6
+  },
 
-  { ref: "Saudade", sqmBox: 1, kgBox: 18 },
-  { ref: "Metro (10x20)", sqmBox: 0.8, kgBox: 10.4 },
-  { ref: "Metro (7,5x15)", sqmBox: 1.0124, kgBox: 12.6 },
+  // KIT KAT
 
-  { ref: "Sea", sqmBox: 1, kgBox: 18 },
-  { ref: "Milano (6,9x24)", sqmBox: 0.7451, kgBox: 10.62 },
-  { ref: "Milano (20x20)", sqmBox: 0.68, kgBox: 13.11 },
+  {
+    ref: "Kit-Kat | Green | 189140",
+    sqmBox: 0.52,
+    kgBox: 8.4
+  },
 
-  { ref: "Tabarca 7,5x23", sqmBox: 0.4829, kgBox: 7 },
-  { ref: "Mintons (20x20)", sqmBox: 0.68, kgBox: 14.03 },
+  {
+    ref: "Kit-Kat | White | 189141",
+    sqmBox: 0.52,
+    kgBox: 8.4
+  },
 
-  { ref: "Tabarca 15x15", sqmBox: 0.675, kgBox: 10.26 },
-  { ref: "Multishapes (25x25)", sqmBox: 0.5, kgBox: 9.01 },
+  // MEKNES
 
-  { ref: "Tahiti", sqmBox: 1, kgBox: 18 },
-  { ref: "Olivia (15x15)", sqmBox: 0.675, kgBox: 10.26 },
+  {
+    ref: "Meknes | Aqua | 189180",
+    sqmBox: 0.98,
+    kgBox: 17.5
+  },
 
-  { ref: "Terracota", sqmBox: 1, kgBox: 18 },
-  { ref: "Origami (25x25)", sqmBox: 0.5, kgBox: 9.6 },
+  {
+    ref: "Meknes | Sand | 189181",
+    sqmBox: 0.98,
+    kgBox: 17.5
+  },
 
-  { ref: "Terraluz", sqmBox: 1, kgBox: 18 },
-  { ref: "Renania (6,5x20)", sqmBox: 0.624, kgBox: 8.16 },
-  { ref: "Renania (20x20)", sqmBox: 0.68, kgBox: 13.19 },
+  // MILANO
 
-  { ref: "Valencia", sqmBox: 1, kgBox: 18 },
-  { ref: "Riad (6,2x25)", sqmBox: 0.5579, kgBox: 7.34 },
-  { ref: "Riad (12,5x12,5)", sqmBox: 0.9375, kgBox: 12.42 },
+  {
+    ref: "Milano | Bosco | 189192",
+    sqmBox: 1,
+    kgBox: 18.2
+  },
 
-  { ref: "Riad Exa (21,5x25)", sqmBox: 0.972, kgBox: 18.6 },
+  {
+    ref: "Milano | Cenere | 189193",
+    sqmBox: 1,
+    kgBox: 18.2
+  },
 
-  { ref: "Saudade", sqmBox: 0.68, kgBox: 13.18 },
+  {
+    ref: "Milano | Avorio | 189194",
+    sqmBox: 1,
+    kgBox: 18.2
+  },
 
-  { ref: "Scala (11,5x23,1)", sqmBox: 0.6375, kgBox: 9.62 },
+  // PIETRASANTA
 
-  { ref: "Sea (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  {
+    ref: "Pietrasanta | Grey | 189330",
+    sqmBox: 0.59,
+    kgBox: 11.5
+  },
 
-  { ref: "Shapes (25x25)", sqmBox: 1, kgBox: 15.52 },
+  {
+    ref: "Pietrasanta | Ivory | 189331",
+    sqmBox: 0.59,
+    kgBox: 11.5
+  },
 
-  { ref: "Stripes Mix Teak (25x25)", sqmBox: 0.875, kgBox: 13.72 },
+  {
+    ref: "Pietrasanta | Dark | 189332",
+    sqmBox: 0.59,
+    kgBox: 11.5
+  },
 
-  { ref: "Tabarca (15x15)", sqmBox: 0.675, kgBox: 10.26 },
-  { ref: "Tabarca Copper/Gold (15x15)", sqmBox: 0.9, kgBox: 13.2 },
-  { ref: "Tabarca (7,5x23)", sqmBox: 0.4829, kgBox: 7 },
+  // RIAD
 
-  { ref: "Tahiti (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  {
+    ref: "Riad | Aqua | 189390",
+    sqmBox: 1.08,
+    kgBox: 19.1
+  },
 
-  { ref: "Terracota (20x20)", sqmBox: 0.68, kgBox: 14.03 },
+  {
+    ref: "Riad | Sand | 189391",
+    sqmBox: 1.08,
+    kgBox: 19.1
+  },
 
-  { ref: "Terraluz (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  // TABARCA
 
-  { ref: "Valencia (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  {
+    ref: "Tabarca | Verde | 188251N",
+    sqmBox: 0.675,
+    kgBox: 10.26
+  },
 
-  { ref: "Xabia (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  {
+    ref: "Tabarca | Cielo | 188250N",
+    sqmBox: 0.675,
+    kgBox: 10.26
+  },
 
-  { ref: "Xabia", sqmBox: 1, kgBox: 18 },
+  {
+    ref: "Tabarca | Marino | 188249N",
+    sqmBox: 0.675,
+    kgBox: 10.26
+  },
+
+  // TERRALUZ
+
+  {
+    ref: "Terraluz | Arena | 189510",
+    sqmBox: 1.22,
+    kgBox: 22.6
+  },
+
+  {
+    ref: "Terraluz | Terra | 189511",
+    sqmBox: 1.22,
+    kgBox: 22.6
+  },
+
+  // VALENCIA
+
+  {
+    ref: "Valencia | Blanco | 188470N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Coral | 188471N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Salvia | 188472N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Azul | 188473N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Palmar | 188474N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Carmen | 188475N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Jordana | 188476N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Remor | 188477N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Sorolla | 188478N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  {
+    ref: "Valencia | Turia | 188479N",
+    sqmBox: 1.36,
+    kgBox: 14.03
+  },
+
+  // XABIA
+
+  {
+    ref: "Xabia | Aqua | 189620",
+    sqmBox: 1,
+    kgBox: 18.1
+  },
+
+  {
+    ref: "Xabia | Sand | 189621",
+    sqmBox: 1,
+    kgBox: 18.1
+  }
+
 ];
