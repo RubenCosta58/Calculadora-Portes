@@ -8,20 +8,20 @@ export default function App() {
 
   const [postalCode, setPostalCode] = useState("");
 
-  const [ref1, setRef1] = useState("");
-  const [ref2, setRef2] = useState("");
-  const [ref3, setRef3] = useState("");
-  const [ref4, setRef4] = useState("");
+  const [product1, setProduct1] = useState(null);
+  const [product2, setProduct2] = useState(null);
+  const [product3, setProduct3] = useState(null);
+  const [product4, setProduct4] = useState(null);
+
+  const [search1, setSearch1] = useState("");
+  const [search2, setSearch2] = useState("");
+  const [search3, setSearch3] = useState("");
+  const [search4, setSearch4] = useState("");
 
   const [sqm1, setSqm1] = useState("");
   const [sqm2, setSqm2] = useState("");
   const [sqm3, setSqm3] = useState("");
   const [sqm4, setSqm4] = useState("");
-
-  const p1 = products.find((p) => p.ref === ref1) || {};
-  const p2 = products.find((p) => p.ref === ref2) || {};
-  const p3 = products.find((p) => p.ref === ref3) || {};
-  const p4 = products.find((p) => p.ref === ref4) || {};
 
   const calcBoxes = (sqm, sqmBox) => {
 
@@ -45,33 +45,29 @@ export default function App() {
   };
 
   const result1 =
-    calcBoxes(sqm1, p1.sqmBox);
+    calcBoxes(sqm1, product1?.sqmBox);
 
   const result2 =
-    calcBoxes(sqm2, p2.sqmBox);
+    calcBoxes(sqm2, product2?.sqmBox);
 
   const result3 =
-    calcBoxes(sqm3, p3.sqmBox);
+    calcBoxes(sqm3, product3?.sqmBox);
 
   const result4 =
-    calcBoxes(sqm4, p4.sqmBox);
-
-  const boxes1 = result1.boxes;
-  const boxes2 = result2.boxes;
-  const boxes3 = result3.boxes;
-  const boxes4 = result4.boxes;
+    calcBoxes(sqm4, product4?.sqmBox);
 
   const totalBoxes =
-    boxes1 +
-    boxes2 +
-    boxes3 +
-    boxes4;
+    result1.boxes +
+    result2.boxes +
+    result3.boxes +
+    result4.boxes;
 
   const totalWeightProducts =
-    boxes1 * (p1.kgBox || 0) +
-    boxes2 * (p2.kgBox || 0) +
-    boxes3 * (p3.kgBox || 0) +
-    boxes4 * (p4.kgBox || 0);
+
+    result1.boxes * (product1?.kgBox || 0) +
+    result2.boxes * (product2?.kgBox || 0) +
+    result3.boxes * (product3?.kgBox || 0) +
+    result4.boxes * (product4?.kgBox || 0);
 
   const palletWeight =
     totalWeightProducts > 0 ? 18 : 0;
@@ -80,6 +76,7 @@ export default function App() {
     totalWeightProducts + palletWeight;
 
   const realTotalSqm =
+
     result1.realSqm +
     result2.realSqm +
     result3.realSqm +
@@ -152,15 +149,17 @@ export default function App() {
 
   const renderReference = (
     title,
-    ref,
-    setRef,
+    search,
+    setSearch,
+    product,
+    setProduct,
     sqm,
     setSqm,
-    boxes
+    result
   ) => {
 
-    const filteredProducts = products.filter((product) =>
-      product.ref.toLowerCase().includes(ref.toLowerCase())
+    const filteredProducts = products.filter((p) =>
+      p.ref.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
@@ -180,10 +179,11 @@ export default function App() {
 
         <input
           type="text"
-          value={ref}
-          onChange={(e) =>
-            setRef(e.target.value)
-          }
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setProduct(null);
+          }}
           placeholder="Pesquisar referência..."
           style={{
             padding: "12px",
@@ -195,7 +195,7 @@ export default function App() {
           }}
         />
 
-        {ref.length >= 2 && (
+        {search.length >= 2 && !product && (
 
           <div
             style={{
@@ -215,7 +215,10 @@ export default function App() {
 
               <div
                 key={p.ref}
-                onClick={() => setRef(p.ref)}
+                onClick={() => {
+                  setProduct(p);
+                  setSearch(p.ref);
+                }}
                 style={{
                   padding: "12px",
                   cursor: "pointer",
@@ -249,15 +252,39 @@ export default function App() {
           }}
         />
 
-        <div
-          style={{
-            marginTop: "10px",
-            fontWeight: "bold",
-            fontSize: "16px"
-          }}
-        >
-          Caixas necessárias: {boxes}
-        </div>
+        {product && (
+
+          <div
+            style={{
+              marginTop: "12px",
+              fontSize: "15px",
+              lineHeight: "1.6"
+            }}
+          >
+
+            <div>
+              <strong>m² caixa:</strong>{" "}
+              {product.sqmBox}
+            </div>
+
+            <div>
+              <strong>kg caixa:</strong>{" "}
+              {product.kgBox}
+            </div>
+
+            <div>
+              <strong>Caixas:</strong>{" "}
+              {result.boxes}
+            </div>
+
+            <div>
+              <strong>m² reais:</strong>{" "}
+              {result.realSqm.toFixed(2)}
+            </div>
+
+          </div>
+
+        )}
 
       </div>
 
@@ -286,11 +313,13 @@ export default function App() {
 
             {renderReference(
               "Referência 1",
-              ref1,
-              setRef1,
+              search1,
+              setSearch1,
+              product1,
+              setProduct1,
               sqm1,
               setSqm1,
-              boxes1
+              result1
             )}
 
           </div>
@@ -299,11 +328,13 @@ export default function App() {
 
             {renderReference(
               "Referência 2",
-              ref2,
-              setRef2,
+              search2,
+              setSearch2,
+              product2,
+              setProduct2,
               sqm2,
               setSqm2,
-              boxes2
+              result2
             )}
 
           </div>
@@ -312,11 +343,13 @@ export default function App() {
 
             {renderReference(
               "Referência 3",
-              ref3,
-              setRef3,
+              search3,
+              setSearch3,
+              product3,
+              setProduct3,
               sqm3,
               setSqm3,
-              boxes3
+              result3
             )}
 
           </div>
@@ -325,11 +358,13 @@ export default function App() {
 
             {renderReference(
               "Referência 4",
-              ref4,
-              setRef4,
+              search4,
+              setSearch4,
+              product4,
+              setProduct4,
               sqm4,
               setSqm4,
-              boxes4
+              result4
             )}
 
           </div>
