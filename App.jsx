@@ -24,14 +24,42 @@ export default function App() {
   const p4 = products.find((p) => p.ref === ref4) || {};
 
   const calcBoxes = (sqm, sqmBox) => {
-    if (!sqm || !sqmBox) return 0;
-    return Math.ceil(Number(sqm) / sqmBox);
+
+    if (!sqm || !sqmBox) {
+      return {
+        boxes: 0,
+        realSqm: 0
+      };
+    }
+
+    const boxes =
+      Math.ceil(Number(sqm) / sqmBox);
+
+    const realSqm =
+      boxes * sqmBox;
+
+    return {
+      boxes,
+      realSqm
+    };
   };
 
-  const boxes1 = calcBoxes(sqm1, p1.sqmBox);
-  const boxes2 = calcBoxes(sqm2, p2.sqmBox);
-  const boxes3 = calcBoxes(sqm3, p3.sqmBox);
-  const boxes4 = calcBoxes(sqm4, p4.sqmBox);
+  const result1 =
+    calcBoxes(sqm1, p1.sqmBox);
+
+  const result2 =
+    calcBoxes(sqm2, p2.sqmBox);
+
+  const result3 =
+    calcBoxes(sqm3, p3.sqmBox);
+
+  const result4 =
+    calcBoxes(sqm4, p4.sqmBox);
+
+  const boxes1 = result1.boxes;
+  const boxes2 = result2.boxes;
+  const boxes3 = result3.boxes;
+  const boxes4 = result4.boxes;
 
   const totalBoxes =
     boxes1 +
@@ -52,10 +80,10 @@ export default function App() {
     totalWeightProducts + palletWeight;
 
   const realTotalSqm =
-    boxes1 * (p1.sqmBox || 0) +
-    boxes2 * (p2.sqmBox || 0) +
-    boxes3 * (p3.sqmBox || 0) +
-    boxes4 * (p4.sqmBox || 0);
+    result1.realSqm +
+    result2.realSqm +
+    result3.realSqm +
+    result4.realSqm;
 
   const zone = getZone(postalCode);
 
@@ -143,7 +171,8 @@ export default function App() {
           style={{
             fontWeight: "bold",
             display: "block",
-            marginBottom: "5px"
+            marginBottom: "8px",
+            fontSize: "18px"
           }}
         >
           {title}
@@ -157,45 +186,52 @@ export default function App() {
           }
           placeholder="Pesquisar referência..."
           style={{
-            padding: "10px",
-            width: "300px",
+            padding: "12px",
+            width: "100%",
             marginBottom: "10px",
-            borderRadius: "10px",
-            border: "1px solid #ccc"
+            borderRadius: "14px",
+            border: "1px solid #d1d5db",
+            fontSize: "16px"
           }}
         />
 
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: "10px",
-            overflow: "hidden",
-            marginBottom: "10px",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-            maxHeight: "220px",
-            overflowY: "auto"
-          }}
-        >
+        {ref.length >= 2 && (
 
-          {filteredProducts.slice(0, 8).map((p) => (
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "14px",
+              overflow: "hidden",
+              marginBottom: "10px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              maxHeight: "220px",
+              overflowY: "auto"
+            }}
+          >
 
-            <div
-              key={p.ref}
-              onClick={() => setRef(p.ref)}
-              style={{
-                padding: "10px",
-                cursor: "pointer",
-                borderBottom: "1px solid #eee"
-              }}
-            >
+            {filteredProducts
+              .slice(0, 12)
+              .map((p) => (
 
-              {p.ref}
+              <div
+                key={p.ref}
+                onClick={() => setRef(p.ref)}
+                style={{
+                  padding: "12px",
+                  cursor: "pointer",
+                  borderBottom: "1px solid #f1f1f1"
+                }}
+              >
 
-            </div>
+                {p.ref}
 
-          ))}
+              </div>
 
-        </div>
+            ))}
+
+          </div>
+
+        )}
 
         <input
           type="number"
@@ -203,17 +239,21 @@ export default function App() {
           onChange={(e) =>
             setSqm(e.target.value)
           }
-          placeholder="Quantidade"
+          placeholder="Quantidade m²"
           style={{
-            padding: "8px",
-            width: "120px"
+            padding: "10px",
+            width: "160px",
+            borderRadius: "12px",
+            border: "1px solid #d1d5db",
+            fontSize: "16px"
           }}
         />
 
         <div
           style={{
-            marginTop: "8px",
-            fontWeight: "bold"
+            marginTop: "10px",
+            fontWeight: "bold",
+            fontSize: "16px"
           }}
         >
           Caixas necessárias: {boxes}
@@ -230,8 +270,6 @@ export default function App() {
 
       <div className="max-w-7xl mx-auto">
 
-        {/* LOGO */}
-
         <div className="flex justify-center mb-10">
 
           <img
@@ -241,8 +279,6 @@ export default function App() {
           />
 
         </div>
-
-        {/* REFERÊNCIAS */}
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
 
@@ -300,13 +336,11 @@ export default function App() {
 
         </div>
 
-        {/* CÓDIGO POSTAL */}
-
         <div className="flex justify-center mb-14">
 
           <div className="bg-black rounded-3xl p-6 w-[420px]">
 
-            <div className="text-white text-3xl font-bold text-center mb-5">
+            <div className="text-white text-2xl font-bold text-center mb-5">
               CÓDIGO POSTAL
             </div>
 
@@ -317,14 +351,12 @@ export default function App() {
                 setPostalCode(e.target.value)
               }
               placeholder="2750-440"
-              className="w-full rounded-2xl p-4 text-center text-3xl font-bold"
+              className="w-full rounded-2xl p-4 text-center text-2xl font-bold"
             />
 
           </div>
 
         </div>
-
-        {/* RESULTADOS */}
 
         <div className="grid md:grid-cols-2 gap-8">
 
