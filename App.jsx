@@ -23,13 +23,24 @@ export default function App() {
   const [sqm3, setSqm3] = useState("");
   const [sqm4, setSqm4] = useState("");
 
+  const fuelRates = {
+    1: 11.76,
+    2: 13.91,
+    3: 15.40,
+    4: 15.84,
+    5: 46.86,
+    6: 55.55,
+  };
+
   const calcBoxes = (sqm, sqmBox) => {
 
     if (!sqm || !sqmBox) {
+
       return {
         boxes: 0,
-        realSqm: 0
+        realSqm: 0,
       };
+
     }
 
     const boxes =
@@ -40,8 +51,9 @@ export default function App() {
 
     return {
       boxes,
-      realSqm
+      realSqm,
     };
+
   };
 
   const result1 =
@@ -57,6 +69,7 @@ export default function App() {
     calcBoxes(sqm4, product4?.sqmBox);
 
   const totalBoxes =
+
     result1.boxes +
     result2.boxes +
     result3.boxes +
@@ -82,14 +95,24 @@ export default function App() {
     result3.realSqm +
     result4.realSqm;
 
-  const zone = getZone(postalCode);
+  const zone =
+    getZone(postalCode);
 
   const baseShipping =
     getShipping(zone, totalWeight);
 
+  const fuelRate =
+    fuelRates[zone] || 0;
+
   const shippingPrice =
+
     baseShipping > 0
-      ? (baseShipping * 1.03).toFixed(2)
+
+      ? (
+          baseShipping *
+          (1 + fuelRate / 100)
+        ).toFixed(2)
+
       : "0.00";
 
   const exportPDF = () => {
@@ -136,15 +159,14 @@ export default function App() {
       95
     );
 
-    doc.setFontSize(18);
-
     doc.text(
       `Valor Transporte: ${shippingPrice} €`,
       20,
-      120
+      110
     );
 
     doc.save("portes-dune.pdf");
+
   };
 
   const renderReference = (
@@ -159,7 +181,11 @@ export default function App() {
   ) => {
 
     const filteredProducts = products.filter((p) =>
-      p.ref.toLowerCase().includes(search.toLowerCase())
+
+      p.ref
+        .toLowerCase()
+        .includes(search.toLowerCase())
+
     );
 
     return (
@@ -171,18 +197,22 @@ export default function App() {
             fontWeight: "bold",
             display: "block",
             marginBottom: "8px",
-            fontSize: "18px"
+            fontSize: "18px",
           }}
         >
+
           {title}
+
         </label>
 
         <input
           type="text"
           value={search}
           onChange={(e) => {
+
             setSearch(e.target.value);
             setProduct(null);
+
           }}
           placeholder="Pesquisar referência..."
           style={{
@@ -191,7 +221,7 @@ export default function App() {
             marginBottom: "10px",
             borderRadius: "14px",
             border: "1px solid #d1d5db",
-            fontSize: "16px"
+            fontSize: "16px",
           }}
         />
 
@@ -203,9 +233,10 @@ export default function App() {
               borderRadius: "14px",
               overflow: "hidden",
               marginBottom: "10px",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              boxShadow:
+                "0 4px 12px rgba(0,0,0,0.08)",
               maxHeight: "220px",
-              overflowY: "auto"
+              overflowY: "auto",
             }}
           >
 
@@ -216,21 +247,76 @@ export default function App() {
               <div
                 key={p.ref}
                 onClick={() => {
+
                   setProduct(p);
                   setSearch(p.ref);
+
                 }}
                 style={{
                   padding: "12px",
                   cursor: "pointer",
-                  borderBottom: "1px solid #f1f1f1"
+                  borderBottom:
+                    "1px solid #f1f1f1",
                 }}
               >
 
-                {p.ref}
+                <div
+                  style={{
+                    fontWeight: "bold",
+                  }}
+                >
+                  {p.ref}
+                </div>
+
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: "#666",
+                  }}
+                >
+                  {p.name}
+                </div>
 
               </div>
 
             ))}
+
+          </div>
+
+        )}
+
+        {product && (
+
+          <div
+            style={{
+              background: "#f9fafb",
+              borderRadius: "14px",
+              padding: "12px",
+              marginBottom: "12px",
+              fontSize: "14px",
+              lineHeight: "1.8",
+            }}
+          >
+
+            <div>
+              <strong>Referência:</strong>{" "}
+              {product.ref}
+            </div>
+
+            <div>
+              <strong>Coleção:</strong>{" "}
+              {product.name}
+            </div>
+
+            <div>
+              <strong>m² caixa:</strong>{" "}
+              {product.sqmBox}
+            </div>
+
+            <div>
+              <strong>kg caixa:</strong>{" "}
+              {product.kgBox}
+            </div>
 
           </div>
 
@@ -244,72 +330,75 @@ export default function App() {
           }
           placeholder="Quantidade m²"
           style={{
-            padding: "10px",
-            width: "160px",
-            borderRadius: "12px",
+            padding: "12px",
+            width: "100%",
+            borderRadius: "14px",
             border: "1px solid #d1d5db",
-            fontSize: "16px"
+            fontSize: "16px",
           }}
         />
 
-        {product && (
+        <div
+          style={{
+            marginTop: "12px",
+            fontSize: "15px",
+            lineHeight: "1.8",
+          }}
+        >
 
-          <div
-            style={{
-              marginTop: "12px",
-              fontSize: "15px",
-              lineHeight: "1.6"
-            }}
-          >
-
-            <div>
-              <strong>m² caixa:</strong>{" "}
-              {product.sqmBox}
-            </div>
-
-            <div>
-              <strong>kg caixa:</strong>{" "}
-              {product.kgBox}
-            </div>
-
-            <div>
-              <strong>Caixas:</strong>{" "}
-              {result.boxes}
-            </div>
-
-            <div>
-              <strong>m² reais:</strong>{" "}
-              {result.realSqm.toFixed(2)}
-            </div>
-
+          <div>
+            <strong>Caixas:</strong>{" "}
+            {result.boxes}
           </div>
 
-        )}
+          <div>
+            <strong>m² reais:</strong>{" "}
+            {result.realSqm.toFixed(2)}
+          </div>
+
+        </div>
 
       </div>
 
     );
+
   };
 
   return (
 
-    <div className="min-h-screen bg-gray-100 p-10">
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f3f4f6",
+        padding: "40px",
+        fontFamily: "Arial",
+      }}
+    >
 
-      <div className="max-w-7xl mx-auto">
+      <div
+        style={{
+          maxWidth: "1500px",
+          margin: "0 auto",
+        }}
+      >
 
-        <div className="flex justify-center mb-10">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "1fr 1fr",
+            gap: "25px",
+            marginBottom: "50px",
+          }}
+        >
 
-          <img
-            src="/logo.png"
-            alt="Logo"
-            className="w-20 h-auto"
-          />
-
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-
-          <div className="bg-white rounded-3xl shadow-md p-7">
+          <div
+            style={{
+              background: "#fff",
+              padding: "25px",
+              borderRadius: "28px",
+            }}
+          >
 
             {renderReference(
               "Referência 1",
@@ -324,7 +413,13 @@ export default function App() {
 
           </div>
 
-          <div className="bg-white rounded-3xl shadow-md p-7">
+          <div
+            style={{
+              background: "#fff",
+              padding: "25px",
+              borderRadius: "28px",
+            }}
+          >
 
             {renderReference(
               "Referência 2",
@@ -339,7 +434,13 @@ export default function App() {
 
           </div>
 
-          <div className="bg-white rounded-3xl shadow-md p-7">
+          <div
+            style={{
+              background: "#fff",
+              padding: "25px",
+              borderRadius: "28px",
+            }}
+          >
 
             {renderReference(
               "Referência 3",
@@ -354,7 +455,13 @@ export default function App() {
 
           </div>
 
-          <div className="bg-white rounded-3xl shadow-md p-7">
+          <div
+            style={{
+              background: "#fff",
+              padding: "25px",
+              borderRadius: "28px",
+            }}
+          >
 
             {renderReference(
               "Referência 4",
@@ -371,12 +478,35 @@ export default function App() {
 
         </div>
 
-        <div className="flex justify-center mb-14">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "50px",
+          }}
+        >
 
-          <div className="bg-black rounded-3xl p-6 w-[420px]">
+          <div
+            style={{
+              background: "#000",
+              borderRadius: "30px",
+              padding: "30px",
+              width: "450px",
+            }}
+          >
 
-            <div className="text-white text-2xl font-bold text-center mb-5">
+            <div
+              style={{
+                color: "#fff",
+                fontSize: "40px",
+                fontWeight: "bold",
+                textAlign: "center",
+                marginBottom: "20px",
+              }}
+            >
+
               CÓDIGO POSTAL
+
             </div>
 
             <input
@@ -385,23 +515,57 @@ export default function App() {
               onChange={(e) =>
                 setPostalCode(e.target.value)
               }
-              placeholder="2750-440"
-              className="w-full rounded-2xl p-4 text-center text-2xl font-bold"
+              placeholder="8100"
+              style={{
+                width: "100%",
+                padding: "18px",
+                borderRadius: "22px",
+                border: "none",
+                fontSize: "36px",
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
             />
 
           </div>
 
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "1fr 1fr 1fr",
+            gap: "25px",
+          }}
+        >
 
-          <div className="bg-white rounded-3xl shadow-md p-8">
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "28px",
+              padding: "35px",
+            }}
+          >
 
-            <h2 className="text-4xl font-bold mb-8">
+            <div
+              style={{
+                fontSize: "42px",
+                fontWeight: "bold",
+                marginBottom: "30px",
+              }}
+            >
+
               Dados do Produto
-            </h2>
 
-            <div className="space-y-6 text-2xl">
+            </div>
+
+            <div
+              style={{
+                fontSize: "28px",
+                lineHeight: "2.1",
+              }}
+            >
 
               <div>
                 <strong>
@@ -412,7 +576,7 @@ export default function App() {
 
               <div>
                 <strong>
-                  m2 reais finais :
+                  m² reais finais :
                 </strong>{" "}
                 {realTotalSqm.toFixed(2)} m²
               </div>
@@ -428,13 +592,33 @@ export default function App() {
 
           </div>
 
-          <div className="bg-black text-white rounded-3xl shadow-md p-8">
+          <div
+            style={{
+              background: "#000",
+              color: "#fff",
+              borderRadius: "28px",
+              padding: "35px",
+            }}
+          >
 
-            <h2 className="text-4xl font-bold mb-8">
+            <div
+              style={{
+                fontSize: "42px",
+                fontWeight: "bold",
+                marginBottom: "30px",
+              }}
+            >
+
               Resultado Transporte
-            </h2>
 
-            <div className="space-y-6 text-2xl">
+            </div>
+
+            <div
+              style={{
+                fontSize: "28px",
+                lineHeight: "2.1",
+              }}
+            >
 
               <div>
                 <strong>
@@ -461,17 +645,100 @@ export default function App() {
 
           </div>
 
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "28px",
+              padding: "35px",
+            }}
+          >
+
+            <div
+              style={{
+                fontSize: "42px",
+                fontWeight: "bold",
+                marginBottom: "30px",
+              }}
+            >
+
+              Resumo Final
+
+            </div>
+
+            <div
+              style={{
+                fontSize: "28px",
+                lineHeight: "2.1",
+              }}
+            >
+
+              <div>
+                <strong>
+                  Produtos :
+                </strong>{" "}
+                {[
+                  product1,
+                  product2,
+                  product3,
+                  product4,
+                ]
+                  .filter(Boolean)
+                  .length}
+              </div>
+
+              <div>
+                <strong>
+                  Palete :
+                </strong>{" "}
+                {palletWeight} kg
+              </div>
+
+              <div>
+                <strong>
+                  Combustível :
+                </strong>{" "}
+                {fuelRate}%
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <button
-          onClick={exportPDF}
-          className="mt-10 bg-black text-white px-10 py-5 rounded-2xl text-2xl font-bold"
+        <div
+          style={{
+            marginTop: "40px",
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
-          Exportar PDF
-        </button>
+
+          <button
+            onClick={exportPDF}
+            style={{
+              background: "#000",
+              color: "#fff",
+              border: "none",
+              borderRadius: "22px",
+              padding:
+                "18px 40px",
+              fontSize: "24px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+
+            EXPORTAR PDF
+
+          </button>
+
+        </div>
 
       </div>
 
     </div>
+
   );
+
 }
