@@ -79,50 +79,34 @@ export default function App() {
       20
     );
 
-    doc.setFontSize(14);
-
     doc.text(
       `Código Postal: ${postalCode}`,
       20,
-      45
+      40
     );
 
     doc.text(
       `Zona: ${zone || "-"}`,
       20,
-      55
+      50
     );
 
     doc.text(
       `Peso Total: ${totalWeight.toFixed(2)} kg`,
       20,
-      75
+      60
     );
-
-    doc.text(
-      `Caixas Totais: ${totalBoxes}`,
-      20,
-      85
-    );
-
-    doc.text(
-      `m2 reais finais: ${realTotalSqm.toFixed(2)} m²`,
-      20,
-      95
-    );
-
-    doc.setFontSize(18);
 
     doc.text(
       `Valor Transporte: ${shippingPrice} €`,
       20,
-      120
+      70
     );
 
     doc.save("portes-dune.pdf");
   };
 
-  const renderReference = (
+  const renderCard = (
     title,
     ref,
     setRef,
@@ -131,26 +115,18 @@ export default function App() {
     boxes
   ) => (
 
-    <div style={{ marginBottom: "20px" }}>
+    <div className="bg-white rounded-3xl shadow-md p-7">
 
-      <label style={{
-        fontWeight: "bold",
-        display: "block",
-        marginBottom: "5px"
-      }}>
+      <h2 className="text-2xl font-bold mb-6">
         {title}
-      </label>
+      </h2>
 
       <select
         value={ref}
         onChange={(e) =>
           setRef(e.target.value)
         }
-        style={{
-          padding: "8px",
-          width: "300px",
-          marginBottom: "10px"
-        }}
+        className="w-full border rounded-2xl p-4 mb-6 text-lg"
       >
 
         {products.map((p) => (
@@ -166,25 +142,27 @@ export default function App() {
 
       </select>
 
+      <div className="font-bold text-xl mb-3">
+        Quantidade:
+      </div>
+
       <input
         type="number"
         value={sqm}
         onChange={(e) =>
           setSqm(e.target.value)
         }
-        placeholder="Quantidade"
-        style={{
-          padding: "8px",
-          marginLeft: "10px",
-          width: "120px"
-        }}
+        placeholder="Ex: 12"
+        className="w-full border rounded-2xl p-4 text-lg"
       />
 
-      <div style={{
-        marginTop: "8px",
-        fontWeight: "bold"
-      }}>
-        Caixas necessárias: {boxes}
+      <div className="mt-6 text-xl">
+
+        <strong>
+          Caixas necessárias:
+        </strong>{" "}
+        {boxes}
+
       </div>
 
     </div>
@@ -193,187 +171,156 @@ export default function App() {
 
   return (
 
-    <div
-      style={{
-        padding: "30px",
-        fontFamily: "Arial"
-      }}
-    >
+    <div className="min-h-screen bg-gray-100 p-10">
 
-      {/* LOGO */}
+      <div className="max-w-7xl mx-auto">
 
-      <img
-        src="/G1 LOGO.png"
-        alt="Logo"
-        style={{
-          width: "40px",
-          height: "40px",
-          objectFit: "contain",
-          marginBottom: "25px",
-        }}
-      />
-
-      {/* REFERÊNCIAS */}
-
-      <div style={{ marginBottom: "50px" }}>
-
-        {renderReference(
-          "Referência 1",
-          ref1,
-          setRef1,
-          sqm1,
-          setSqm1,
-          boxes1
-        )}
-
-        {renderReference(
-          "Referência 2",
-          ref2,
-          setRef2,
-          sqm2,
-          setSqm2,
-          boxes2
-        )}
-
-        {renderReference(
-          "Referência 3",
-          ref3,
-          setRef3,
-          sqm3,
-          setSqm3,
-          boxes3
-        )}
-
-        {renderReference(
-          "Referência 4",
-          ref4,
-          setRef4,
-          sqm4,
-          setSqm4,
-          boxes4
-        )}
-
-      </div>
-
-      {/* CÓDIGO POSTAL */}
-
-      <div
-        style={{
-          background: "#000",
-          padding: "15px",
-          borderRadius: "18px",
-          marginBottom: "40px",
-          maxWidth: "380px",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-
-        <div
-          style={{
-            color: "#fff",
-            fontSize: "18px",
-            fontWeight: "700",
-            textAlign: "center",
-            marginBottom: "10px",
-            letterSpacing: "1px",
-          }}
-        >
-          CÓDIGO POSTAL
-        </div>
-
-        <input
-          type="text"
-          value={postalCode}
-          onChange={(e) =>
-            setPostalCode(e.target.value)
-          }
-          placeholder="2750-440"
-          style={{
-            width: "100%",
-            padding: "10px",
-            fontSize: "22px",
-            fontWeight: "700",
-            textAlign: "center",
-            borderRadius: "10px",
-            border: "2px solid white",
-            boxSizing: "border-box"
-          }}
+        <img
+          src="/logo.png"
+          alt="Logo"
+          className="w-12 mb-10"
         />
 
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+
+          {renderCard(
+            "Referência 1",
+            ref1,
+            setRef1,
+            sqm1,
+            setSqm1,
+            boxes1
+          )}
+
+          {renderCard(
+            "Referência 2",
+            ref2,
+            setRef2,
+            sqm2,
+            setSqm2,
+            boxes2
+          )}
+
+          {renderCard(
+            "Referência 3",
+            ref3,
+            setRef3,
+            sqm3,
+            setSqm3,
+            boxes3
+          )}
+
+          {renderCard(
+            "Referência 4",
+            ref4,
+            setRef4,
+            sqm4,
+            setSqm4,
+            boxes4
+          )}
+
+        </div>
+
+        <div className="flex justify-center mb-14">
+
+          <div className="bg-black rounded-3xl p-6 w-[420px]">
+
+            <div className="text-white text-3xl font-bold text-center mb-5">
+              CÓDIGO POSTAL
+            </div>
+
+            <input
+              type="text"
+              value={postalCode}
+              onChange={(e) =>
+                setPostalCode(e.target.value)
+              }
+              placeholder="2750-440"
+              className="w-full rounded-2xl p-4 text-center text-3xl font-bold"
+            />
+
+          </div>
+
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+
+          <div className="bg-white rounded-3xl shadow-md p-8">
+
+            <h2 className="text-4xl font-bold mb-8">
+              Dados do Produto
+            </h2>
+
+            <div className="space-y-6 text-2xl">
+
+              <div>
+                <strong>
+                  Caixas necessárias :
+                </strong>{" "}
+                {totalBoxes}
+              </div>
+
+              <div>
+                <strong>
+                  m2 reais finais :
+                </strong>{" "}
+                {realTotalSqm.toFixed(2)} m²
+              </div>
+
+              <div>
+                <strong>
+                  kg estimados :
+                </strong>{" "}
+                {totalWeight.toFixed(2)} kg
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="bg-black text-white rounded-3xl shadow-md p-8">
+
+            <h2 className="text-4xl font-bold mb-8">
+              Resultado Transporte
+            </h2>
+
+            <div className="space-y-6 text-2xl">
+
+              <div>
+                <strong>
+                  Peso Total :
+                </strong>{" "}
+                {totalWeight.toFixed(2)} kg
+              </div>
+
+              <div>
+                <strong>
+                  Zona :
+                </strong>{" "}
+                {zone || "-"}
+              </div>
+
+              <div>
+                <strong>
+                  Valor :
+                </strong>{" "}
+                {shippingPrice} €
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <button
+          onClick={exportPDF}
+          className="mt-10 bg-black text-white px-10 py-5 rounded-2xl text-2xl font-bold"
+        >
+          Exportar PDF
+        </button>
+
       </div>
-
-      {/* RESULTADOS */}
-
-      <div style={{ marginTop: "40px" }}>
-
-        <h2>Dados do Produto</h2>
-
-        <div>
-          <strong>
-            Caixas necessárias :
-          </strong>{" "}
-          {totalBoxes}
-        </div>
-
-        <div>
-          <strong>
-            m2 reais finais :
-          </strong>{" "}
-          {realTotalSqm.toFixed(2)} m²
-        </div>
-
-        <div>
-          <strong>
-            kg estimados :
-          </strong>{" "}
-          {totalWeight.toFixed(2)} kg
-        </div>
-
-      </div>
-
-      <div style={{ marginTop: "40px" }}>
-
-        <h2>Resultado Transporte</h2>
-
-        <div>
-          <strong>
-            Peso Total :
-          </strong>{" "}
-          {totalWeight.toFixed(2)} kg
-        </div>
-
-        <div>
-          <strong>
-            Zona :
-          </strong>{" "}
-          {zone || "-"}
-        </div>
-
-        <div>
-          <strong>
-            Valor :
-          </strong>{" "}
-          {shippingPrice} €
-        </div>
-
-      </div>
-
-      <button
-        onClick={exportPDF}
-        style={{
-          marginTop: "30px",
-          padding: "12px 20px",
-          background: "#000",
-          color: "#fff",
-          border: "none",
-          borderRadius: "10px",
-          cursor: "pointer",
-          fontWeight: "bold"
-        }}
-      >
-        Exportar PDF
-      </button>
 
     </div>
   );
