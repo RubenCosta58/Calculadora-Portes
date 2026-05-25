@@ -1,315 +1,174 @@
 export const products = [
+  { ref: "Piccola", sqmBox: 0.68, kgBox: 13.2 },
 
-  // VALENCIA
+  { ref: "Agadir", sqmBox: 0.68, kgBox: 13.2 },
+  { ref: "Agadir (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  { ref: "Agadir Cotto (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  { ref: "Agadir (7x28)", sqmBox: 0.882, kgBox: 16.65 },
+  { ref: "Agadir Cotto (7x28)", sqmBox: 0.882, kgBox: 16.65 },
 
-  {
-    ref: "188470N",
-    name: "Valencia Blanco",
-    collection: "Valencia",
-    color: "Blanco",
-    code: "M921",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 24.90
-  },
+  { ref: "Alfar 6,5x20", sqmBox: 0.624, kgBox: 8.64 },
+  { ref: "Alfar (6,5x20)", sqmBox: 0.624, kgBox: 8.64 },
 
-  {
-    ref: "188471N",
-    name: "Valencia Coral",
-    collection: "Valencia",
-    color: "Coral",
-    code: "M921",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 24.90
-  },
+  { ref: "Altea 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
+  { ref: "Altea (7,5x30)", sqmBox: 0.4949, kgBox: 7.92 },
 
-  {
-    ref: "188472N",
-    name: "Valencia Salvia",
-    collection: "Valencia",
-    color: "Salvia",
-    code: "M921",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 24.90
-  },
+  { ref: "Antiga 6,9x24", sqmBox: 0.7451, kgBox: 10.8 },
+  { ref: "Antiga (6,9x24)", sqmBox: 0.7451, kgBox: 10.8 },
+  { ref: "Antiga Blanco (20x20)", sqmBox: 0.68, kgBox: 13.11 },
 
-  {
-    ref: "188473N",
-    name: "Valencia Azul",
-    collection: "Valencia",
-    color: "Azul",
-    code: "M921",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 24.90
-  },
+  { ref: "Atelier 7,5x15", sqmBox: 0.5399, kgBox: 9.12 },
+  { ref: "Atelier (7,5x15)", sqmBox: 0.5399, kgBox: 9.12 },
+  { ref: "Atelier (7,5x30)", sqmBox: 0.4949, kgBox: 7.92 },
 
-  {
-    ref: "188474N",
-    name: "Valencia Palmar",
-    collection: "Valencia",
-    color: "Palmar",
-    code: "M923",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 32.90
-  },
+  { ref: "Atelier 7,5x30", sqmBox: 0.4949, kgBox: 7.92 },
+  { ref: "Atlantique (6,9x24)", sqmBox: 0.7451, kgBox: 10.71 },
+  { ref: "Atlantique (20x20)", sqmBox: 0.68, kgBox: 13.18 },
 
-  {
-    ref: "188475N",
-    name: "Valencia Carmen",
-    collection: "Valencia",
-    color: "Carmen",
-    code: "M923",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 32.90
-  },
+  { ref: "Atlantique 6,9x24", sqmBox: 0.7451, kgBox: 10.71 },
+  { ref: "Bali (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
 
-  {
-    ref: "188476N",
-    name: "Valencia Jordana",
-    collection: "Valencia",
-    color: "Jordana",
-    code: "M923",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 32.90
-  },
+  { ref: "Atlantique 20x20", sqmBox: 0.68, kgBox: 13.18 },
+  { ref: "Barraquetes/Mareny/Cabanyal (20x20)", sqmBox: 0.68, kgBox: 12.82 },
 
-  {
-    ref: "188477N",
-    name: "Valencia Remor",
-    collection: "Valencia",
-    color: "Remor",
-    code: "M923",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 32.90
-  },
+  { ref: "Bali", sqmBox: 1, kgBox: 18 },
+  { ref: "Berlin Glossy (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  { ref: "Berlin Matt (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  { ref: "Berlin Exa (21,5x25)", sqmBox: 0.972, kgBox: 18.72 },
 
-  {
-    ref: "188478N",
-    name: "Valencia Sorolla",
-    collection: "Valencia",
-    color: "Sorolla",
-    code: "M923",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 32.90
-  },
+  { ref: "Berlin", sqmBox: 1, kgBox: 18 },
+  { ref: "Black & White (20x20)", sqmBox: 0.68, kgBox: 13.18 },
 
-  {
-    ref: "188479N",
-    name: "Valencia Turia",
-    collection: "Valencia",
-    color: "Turia",
-    code: "M923",
-    size: "20x20",
-    boxM2: 1.36,
-    boxKg: 14.03,
-    pvp: 32.90
-  },
+  { ref: "Black & White", sqmBox: 1, kgBox: 18 },
+  { ref: "Chicago (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  { ref: "Chicago Exa (21,5x25)", sqmBox: 0.972, kgBox: 18.72 },
 
-  // TABARCA
+  { ref: "Chicago", sqmBox: 1, kgBox: 18 },
+  { ref: "Coimbra (20x20)", sqmBox: 0.68, kgBox: 12.82 },
 
-  {
-    ref: "188251N",
-    name: "Tabarca Verde",
-    collection: "Tabarca",
-    color: "Verde",
-    code: "M894",
-    size: "15x15",
-    boxM2: 0.675,
-    boxKg: 10.26,
-    pvp: 52.90
-  },
+  { ref: "Crackle", sqmBox: 0.68, kgBox: 13 },
+  { ref: "Corfu (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
 
-  {
-    ref: "188250N",
-    name: "Tabarca Cielo",
-    collection: "Tabarca",
-    color: "Cielo",
-    code: "M894",
-    size: "15x15",
-    boxM2: 0.675,
-    boxKg: 10.26,
-    pvp: 52.90
-  },
+  { ref: "Doria", sqmBox: 1, kgBox: 18 },
+  { ref: "Creta (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
 
-  {
-    ref: "188249N",
-    name: "Tabarca Marino",
-    collection: "Tabarca",
-    color: "Marino",
-    code: "M894",
-    size: "15x15",
-    boxM2: 0.675,
-    boxKg: 10.26,
-    pvp: 52.90
-  },
+  { ref: "Exa", sqmBox: 1, kgBox: 18 },
+  { ref: "Doria (20x20)", sqmBox: 0.68, kgBox: 14.03 },
 
-  // AGADIR
+  { ref: "Flat", sqmBox: 1.2599, kgBox: 20.16 },
+  { ref: "Duomo (20x20)", sqmBox: 0.68, kgBox: 13.11 },
 
-  {
-    ref: "188576",
-    name: "Agadir Agua",
-    collection: "Agadir",
-    color: "Agua",
-    code: "M926",
-    size: "14,7x14,7",
-    boxM2: 0.9507,
-    boxKg: 15.4,
-    pvp: 64.90
-  },
+  { ref: "Flat Deluxe", sqmBox: 1.2599, kgBox: 20.16 },
+  { ref: "Emanuele (20x20)", sqmBox: 0.68, kgBox: 13.11 },
 
-  {
-    ref: "188577",
-    name: "Agadir Lago",
-    collection: "Agadir",
-    color: "Lago",
-    code: "M926",
-    size: "14,7x14,7",
-    boxM2: 0.9507,
-    boxKg: 15.4,
-    pvp: 64.90
-  },
+  { ref: "Flora Lapis", sqmBox: 1, kgBox: 18 },
+  { ref: "Evora (20x20)", sqmBox: 0.68, kgBox: 13.18 },
 
-  {
-    ref: "188578",
-    name: "Agadir Cotto",
-    collection: "Agadir",
-    color: "Cotto",
-    code: "M926",
-    size: "14,7x14,7",
-    boxM2: 0.9507,
-    boxKg: 15.4,
-    pvp: 64.90
-  },
+  { ref: "Fragmenta 20x20", sqmBox: 0.68, kgBox: 13.19 },
+  { ref: "Exa (15x17)", sqmBox: 0.5014, kgBox: 9.13 },
 
-  // MILANO
+  { ref: "Golden Stone", sqmBox: 1, kgBox: 18 },
+  { ref: "Faro (20x20)", sqmBox: 0.68, kgBox: 13.18 },
 
-  {
-    ref: "189192",
-    name: "Milano Bosco",
-    collection: "Milano",
-    color: "Bosco",
-    code: "M921",
-    size: "20x20",
-    boxM2: 1,
-    boxKg: 18.2,
-    pvp: 61.50
-  },
+  { ref: "Granadella", sqmBox: 1, kgBox: 18 },
+  { ref: "Flat (7,5x30)", sqmBox: 0.4949, kgBox: 7.92 },
 
-  {
-    ref: "189193",
-    name: "Milano Cenere",
-    collection: "Milano",
-    color: "Cenere",
-    code: "M921",
-    size: "20x20",
-    boxM2: 1,
-    boxKg: 18.2,
-    pvp: 61.50
-  },
+  { ref: "Greenland", sqmBox: 1, kgBox: 18 },
+  { ref: "Flat Rainbow / Iris (7,5x30)", sqmBox: 1.2599, kgBox: 20.16 },
+  { ref: "Flat Savannah (7,5x30)", sqmBox: 0.2699, kgBox: 4.32 },
 
-  {
-    ref: "189194",
-    name: "Milano Avorio",
-    collection: "Milano",
-    color: "Avorio",
-    code: "M921",
-    size: "20x20",
-    boxM2: 1,
-    boxKg: 18.2,
-    pvp: 61.50
-  },
+  { ref: "Iceberg", sqmBox: 1, kgBox: 18 },
+  { ref: "Flora Lapis (14,7x14,7)", sqmBox: 0.9507, kgBox: 17.12 },
 
-  // BERLIN
+  { ref: "Kit-Kat", sqmBox: 0.68, kgBox: 13 },
+  { ref: "Fragmenta (20x20)", sqmBox: 0.68, kgBox: 13.19 },
 
-  {
-    ref: "188620",
-    name: "Berlin White",
-    collection: "Berlin",
-    color: "White",
-    code: "M940",
-    size: "7x28",
-    boxM2: 0.59,
-    boxKg: 11.2,
-    pvp: 79.90
-  },
+  { ref: "Meknes 6,2x25", sqmBox: 0.5579, kgBox: 8.1 },
+  { ref: "Garibaldi (20x20)", sqmBox: 0.68, kgBox: 13.11 },
 
-  {
-    ref: "188621",
-    name: "Berlin Sage",
-    collection: "Berlin",
-    color: "Sage",
-    code: "M940",
-    size: "7x28",
-    boxM2: 0.59,
-    boxKg: 11.2,
-    pvp: 79.90
-  },
+  { ref: "Metro 10x20", sqmBox: 0.8, kgBox: 10.4 },
+  { ref: "Golden Stone Glossy (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+  { ref: "Golden Stone (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
 
-  {
-    ref: "188622",
-    name: "Berlin Navy",
-    collection: "Berlin",
-    color: "Navy",
-    code: "M940",
-    size: "7x28",
-    boxM2: 0.59,
-    boxKg: 11.2,
-    pvp: 79.90
-  },
+  { ref: "Metro 7,5x15", sqmBox: 1.0124, kgBox: 12.6 },
+  { ref: "Grazie (20x20)", sqmBox: 0.68, kgBox: 13.11 },
 
-  // PIETRASANTA
+  { ref: "Mijaran", sqmBox: 1, kgBox: 18 },
+  { ref: "Granadella (11,5x11,5)", sqmBox: 0.5951, kgBox: 10.4 },
+  { ref: "Granadella (6,4x22,3)", sqmBox: 0.4567, kgBox: 7.46 },
 
-  {
-    ref: "189330",
-    name: "Pietrasanta Grey",
-    collection: "Pietrasanta",
-    color: "Grey",
-    code: "M967",
-    size: "7x28",
-    boxM2: 0.59,
-    boxKg: 11.5,
-    pvp: 89.90
-  },
+  { ref: "Milano 6,9x24", sqmBox: 0.7451, kgBox: 10.62 },
+  { ref: "Greenland Glossy (6,4x22,3)", sqmBox: 0.4567, kgBox: 8.64 },
+  { ref: "Greenland Matt (6,4x22,3)", sqmBox: 0.4567, kgBox: 8.64 },
+  { ref: "Greenland (14,7x14,7)", sqmBox: 0.9507, kgBox: 17.29 },
 
-  {
-    ref: "189331",
-    name: "Pietrasanta Ivory",
-    collection: "Pietrasanta",
-    color: "Ivory",
-    code: "M967",
-    size: "7x28",
-    boxM2: 0.59,
-    boxKg: 11.5,
-    pvp: 89.90
-  },
+  { ref: "Milano 20x20", sqmBox: 0.68, kgBox: 13.11 },
+  { ref: "Iceberg (6,4x22,3)", sqmBox: 0.4567, kgBox: 8.67 },
+  { ref: "Iceberg (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
 
-  {
-    ref: "189332",
-    name: "Pietrasanta Dark",
-    collection: "Pietrasanta",
-    color: "Dark",
-    code: "M967",
-    size: "7x28",
-    boxM2: 0.59,
-    boxKg: 11.5,
-    pvp: 89.90
-  }
+  { ref: "Mintons", sqmBox: 1, kgBox: 18 },
+  { ref: "Ima (10x40)", sqmBox: 1.12, kgBox: 12.99 },
 
+  { ref: "Renania 6,5x20", sqmBox: 0.624, kgBox: 8.64 },
+  { ref: "Kit-Kat Mosaic", sqmBox: 0.9595, kgBox: 12.1 },
+
+  { ref: "Riad", sqmBox: 1, kgBox: 18 },
+  { ref: "Meknes (6,2x25)", sqmBox: 0.5579, kgBox: 8.1 },
+  { ref: "Meknes (12,5x12,5)", sqmBox: 0.9375, kgBox: 13.86 },
+
+  { ref: "Saudade", sqmBox: 1, kgBox: 18 },
+  { ref: "Metro (10x20)", sqmBox: 0.8, kgBox: 10.4 },
+  { ref: "Metro (7,5x15)", sqmBox: 1.0124, kgBox: 12.6 },
+
+  { ref: "Sea", sqmBox: 1, kgBox: 18 },
+  { ref: "Milano (6,9x24)", sqmBox: 0.7451, kgBox: 10.62 },
+  { ref: "Milano (20x20)", sqmBox: 0.68, kgBox: 13.11 },
+
+  { ref: "Tabarca 7,5x23", sqmBox: 0.4829, kgBox: 7 },
+  { ref: "Mintons (20x20)", sqmBox: 0.68, kgBox: 14.03 },
+
+  { ref: "Tabarca 15x15", sqmBox: 0.675, kgBox: 10.26 },
+  { ref: "Multishapes (25x25)", sqmBox: 0.5, kgBox: 9.01 },
+
+  { ref: "Tahiti", sqmBox: 1, kgBox: 18 },
+  { ref: "Olivia (15x15)", sqmBox: 0.675, kgBox: 10.26 },
+
+  { ref: "Terracota", sqmBox: 1, kgBox: 18 },
+  { ref: "Origami (25x25)", sqmBox: 0.5, kgBox: 9.6 },
+
+  { ref: "Terraluz", sqmBox: 1, kgBox: 18 },
+  { ref: "Renania (6,5x20)", sqmBox: 0.624, kgBox: 8.16 },
+  { ref: "Renania (20x20)", sqmBox: 0.68, kgBox: 13.19 },
+
+  { ref: "Valencia", sqmBox: 1, kgBox: 18 },
+  { ref: "Riad (6,2x25)", sqmBox: 0.5579, kgBox: 7.34 },
+  { ref: "Riad (12,5x12,5)", sqmBox: 0.9375, kgBox: 12.42 },
+
+  { ref: "Riad Exa (21,5x25)", sqmBox: 0.972, kgBox: 18.6 },
+
+  { ref: "Saudade", sqmBox: 0.68, kgBox: 13.18 },
+
+  { ref: "Scala (11,5x23,1)", sqmBox: 0.6375, kgBox: 9.62 },
+
+  { ref: "Sea (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+
+  { ref: "Shapes (25x25)", sqmBox: 1, kgBox: 15.52 },
+
+  { ref: "Stripes Mix Teak (25x25)", sqmBox: 0.875, kgBox: 13.72 },
+
+  { ref: "Tabarca (15x15)", sqmBox: 0.675, kgBox: 10.26 },
+  { ref: "Tabarca Copper/Gold (15x15)", sqmBox: 0.9, kgBox: 13.2 },
+  { ref: "Tabarca (7,5x23)", sqmBox: 0.4829, kgBox: 7 },
+
+  { ref: "Tahiti (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+
+  { ref: "Terracota (20x20)", sqmBox: 0.68, kgBox: 14.03 },
+
+  { ref: "Terraluz (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+
+  { ref: "Valencia (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+
+  { ref: "Xabia (14,7x14,7)", sqmBox: 0.9507, kgBox: 15.4 },
+
+  { ref: "Xabia", sqmBox: 1, kgBox: 18 },
 ];
