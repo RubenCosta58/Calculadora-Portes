@@ -8,10 +8,10 @@ export default function App() {
 
   const [postalCode, setPostalCode] = useState("");
 
-  const [ref1, setRef1] = useState(products[0]?.ref || "");
-  const [ref2, setRef2] = useState(products[0]?.ref || "");
-  const [ref3, setRef3] = useState(products[0]?.ref || "");
-  const [ref4, setRef4] = useState(products[0]?.ref || "");
+  const [ref1, setRef1] = useState("");
+  const [ref2, setRef2] = useState("");
+  const [ref3, setRef3] = useState("");
+  const [ref4, setRef4] = useState("");
 
   const [sqm1, setSqm1] = useState("");
   const [sqm2, setSqm2] = useState("");
@@ -79,95 +79,150 @@ export default function App() {
       20
     );
 
+    doc.setFontSize(14);
+
     doc.text(
       `Código Postal: ${postalCode}`,
       20,
-      40
+      45
     );
 
     doc.text(
       `Zona: ${zone || "-"}`,
       20,
-      50
+      55
     );
 
     doc.text(
       `Peso Total: ${totalWeight.toFixed(2)} kg`,
       20,
-      60
+      75
     );
+
+    doc.text(
+      `Caixas Totais: ${totalBoxes}`,
+      20,
+      85
+    );
+
+    doc.text(
+      `m2 reais finais: ${realTotalSqm.toFixed(2)} m²`,
+      20,
+      95
+    );
+
+    doc.setFontSize(18);
 
     doc.text(
       `Valor Transporte: ${shippingPrice} €`,
       20,
-      70
+      120
     );
 
     doc.save("portes-dune.pdf");
   };
 
-  const renderCard = (
+  const renderReference = (
     title,
     ref,
     setRef,
     sqm,
     setSqm,
     boxes
-  ) => (
+  ) => {
 
-    <div className="bg-white rounded-3xl shadow-md p-7">
+    const filteredProducts = products.filter((product) =>
+      product.ref.toLowerCase().includes(ref.toLowerCase())
+    );
 
-      <h2 className="text-2xl font-bold mb-6">
-        {title}
-      </h2>
+    return (
 
-      <select
-        value={ref}
-        onChange={(e) =>
-          setRef(e.target.value)
-        }
-        className="w-full border rounded-2xl p-4 mb-6 text-lg"
-      >
+      <div style={{ marginBottom: "20px" }}>
 
-        {products.map((p) => (
+        <label
+          style={{
+            fontWeight: "bold",
+            display: "block",
+            marginBottom: "5px"
+          }}
+        >
+          {title}
+        </label>
 
-          <option
-            key={p.ref}
-            value={p.ref}
-          >
-            {p.ref}
-          </option>
+        <input
+          type="text"
+          value={ref}
+          onChange={(e) =>
+            setRef(e.target.value)
+          }
+          placeholder="Pesquisar referência..."
+          style={{
+            padding: "10px",
+            width: "300px",
+            marginBottom: "10px",
+            borderRadius: "10px",
+            border: "1px solid #ccc"
+          }}
+        />
 
-        ))}
+        <div
+          style={{
+            background: "#fff",
+            borderRadius: "10px",
+            overflow: "hidden",
+            marginBottom: "10px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+            maxHeight: "220px",
+            overflowY: "auto"
+          }}
+        >
 
-      </select>
+          {filteredProducts.slice(0, 8).map((p) => (
 
-      <div className="font-bold text-xl mb-3">
-        Quantidade:
+            <div
+              key={p.ref}
+              onClick={() => setRef(p.ref)}
+              style={{
+                padding: "10px",
+                cursor: "pointer",
+                borderBottom: "1px solid #eee"
+              }}
+            >
+
+              {p.ref}
+
+            </div>
+
+          ))}
+
+        </div>
+
+        <input
+          type="number"
+          value={sqm}
+          onChange={(e) =>
+            setSqm(e.target.value)
+          }
+          placeholder="Quantidade"
+          style={{
+            padding: "8px",
+            width: "120px"
+          }}
+        />
+
+        <div
+          style={{
+            marginTop: "8px",
+            fontWeight: "bold"
+          }}
+        >
+          Caixas necessárias: {boxes}
+        </div>
+
       </div>
 
-      <input
-        type="number"
-        value={sqm}
-        onChange={(e) =>
-          setSqm(e.target.value)
-        }
-        placeholder="Ex: 12"
-        className="w-full border rounded-2xl p-4 text-lg"
-      />
-
-      <div className="mt-6 text-xl">
-
-        <strong>
-          Caixas necessárias:
-        </strong>{" "}
-        {boxes}
-
-      </div>
-
-    </div>
-
-  );
+    );
+  };
 
   return (
 
@@ -175,7 +230,7 @@ export default function App() {
 
       <div className="max-w-7xl mx-auto">
 
-        {/* LOGO CENTRADO */}
+        {/* LOGO */}
 
         <div className="flex justify-center mb-10">
 
@@ -191,41 +246,57 @@ export default function App() {
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
 
-          {renderCard(
-            "Referência 1",
-            ref1,
-            setRef1,
-            sqm1,
-            setSqm1,
-            boxes1
-          )}
+          <div className="bg-white rounded-3xl shadow-md p-7">
 
-          {renderCard(
-            "Referência 2",
-            ref2,
-            setRef2,
-            sqm2,
-            setSqm2,
-            boxes2
-          )}
+            {renderReference(
+              "Referência 1",
+              ref1,
+              setRef1,
+              sqm1,
+              setSqm1,
+              boxes1
+            )}
 
-          {renderCard(
-            "Referência 3",
-            ref3,
-            setRef3,
-            sqm3,
-            setSqm3,
-            boxes3
-          )}
+          </div>
 
-          {renderCard(
-            "Referência 4",
-            ref4,
-            setRef4,
-            sqm4,
-            setSqm4,
-            boxes4
-          )}
+          <div className="bg-white rounded-3xl shadow-md p-7">
+
+            {renderReference(
+              "Referência 2",
+              ref2,
+              setRef2,
+              sqm2,
+              setSqm2,
+              boxes2
+            )}
+
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-md p-7">
+
+            {renderReference(
+              "Referência 3",
+              ref3,
+              setRef3,
+              sqm3,
+              setSqm3,
+              boxes3
+            )}
+
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-md p-7">
+
+            {renderReference(
+              "Referência 4",
+              ref4,
+              setRef4,
+              sqm4,
+              setSqm4,
+              boxes4
+            )}
+
+          </div>
 
         </div>
 
